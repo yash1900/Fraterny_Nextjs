@@ -1287,8 +1287,8 @@ const AdminSummaryManagement: React.FC = () => {
                               if (!block.trim()) return null;
                               
                               // Extract question and answer
-                              const questionMatch = block.match(/Question:\s*(.+?)(?=\n|$)/s);
-                              const answerMatch = block.match(/Answer[:\s]+(.+?)(?=\[\]|$)/s);
+                              const questionMatch = block.match(/Question:\s*([\s\S]+?)(?=\n|$)/);
+                              const answerMatch = block.match(/Answer[:\s]+([\s\S]+?)(?=\[\]|$)/);
                               
                               if (!questionMatch) return null;
                               
