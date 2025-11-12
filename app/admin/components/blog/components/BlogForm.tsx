@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Upload, Image as ImageIcon } from 'lucide-react';
+import { X, Upload, Image as ImageIcon, Eye } from 'lucide-react';
 import { toast } from 'sonner';
 import ResponsiveImage from '@/components/ui/ResponsiveImage';
 import TextEditor from './TextEditor';
+import BlogPreviewModal from './BlogPreviewModal';
 import { BlogFormValues } from '../types';
 
 const generateSlug = (title: string): string => {
@@ -40,6 +41,16 @@ const BlogForm = ({ editingId, formValues, setFormValues, setEditingId, onSucces
   const [tagInput, setTagInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+
+  const handlePreview = () => {
+    // Create a preview post object from current form values
+    if (!formValues.title) {
+      toast.error('Please add a title before previewing');
+      return;
+    }
+    setIsPreviewOpen(true);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
   const { name, value, type } = e.target;
@@ -464,6 +475,14 @@ const BlogForm = ({ editingId, formValues, setFormValues, setEditingId, onSucces
         </div>
 
         <div className="flex items-center justify-end space-x-4">
+          <button
+            type="button"
+            onClick={handlePreview}
+            className="px-4 py-2 border border-blue-600 text-blue-600 rounded-md hover:bg-blue-50 transition-colors flex items-center gap-2"
+          >
+            <Eye size={18} />
+            Preview
+          </button>
           {editingId && (
             <button
               type="button"
@@ -485,6 +504,21 @@ const BlogForm = ({ editingId, formValues, setFormValues, setEditingId, onSucces
           </button>
         </div>
       </form>
+      
+      {/* Preview Modal */}
+      <BlogPreviewModal
+        post={{
+          id: editingId || 'preview',
+          ...formValues,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          category: formValues.category || null,
+          image_key: formValues.image_key || null,
+          tags: formValues.tags || [],
+        }}
+        isOpen={isPreviewOpen}
+        onClose={() => setIsPreviewOpen(false)}
+      />
     </div>
   );
 };

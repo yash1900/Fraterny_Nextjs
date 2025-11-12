@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
 import ResponsiveImage from '@/components/ui/ResponsiveImage';
+import BlogPreviewModal from './BlogPreviewModal';
 import { BlogPost } from '../types';
 
 interface BlogListProps {
@@ -14,6 +15,18 @@ interface BlogListProps {
 }
 
 const BlogList = ({ blogPosts, isLoading, error, onEdit, refetch }: BlogListProps) => {
+  const [previewPost, setPreviewPost] = useState<BlogPost | null>(null);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+
+  const handlePreview = (post: BlogPost) => {
+    setPreviewPost(post);
+    setIsPreviewOpen(true);
+  };
+
+  const handleClosePreview = () => {
+    setIsPreviewOpen(false);
+    setTimeout(() => setPreviewPost(null), 300); // Delay clearing to allow fade-out animation
+  };
 
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this blog post?')) return;
@@ -158,6 +171,12 @@ const parsePostgresArray = (value: any): string[] => {
                     </div>
                     <div className="flex space-x-3">
                       <button
+                        onClick={() => handlePreview(post)}
+                        className="text-blue-600 hover:underline"
+                      >
+                        Preview
+                      </button>
+                      <button
                         onClick={() => handleTogglePublish(post)}
                         className={`${post.published ? 'text-orange-600' : 'text-green-600'} hover:underline`}
                       >
@@ -184,6 +203,15 @@ const parsePostgresArray = (value: any): string[] => {
           ))
         )}
       </div>
+      
+      {/* Preview Modal */}
+      {previewPost && (
+        <BlogPreviewModal
+          post={previewPost}
+          isOpen={isPreviewOpen}
+          onClose={handleClosePreview}
+        />
+      )}
     </div>
   );
 };
