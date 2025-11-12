@@ -252,8 +252,9 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        <Script
-          strategy="afterInteractive">
+      {/* Defer all analytics to lazyOnload for better performance */}
+      <Script
+        strategy="lazyOnload">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -262,10 +263,10 @@ export default function RootLayout({
       </Script>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-FXY9X6KYTZ"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
       
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
@@ -274,7 +275,7 @@ export default function RootLayout({
           });`}
       </Script>
 
-      <Script id="meta-pixel" strategy="afterInteractive">
+      <Script id="meta-pixel" strategy="lazyOnload">
         {`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -291,7 +292,7 @@ export default function RootLayout({
         `}
       </Script>
 
-      <Script id="reddit-pixel" strategy="afterInteractive">
+      <Script id="reddit-pixel" strategy="lazyOnload">
         {`
           !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);
           rdt('init','a2_hq9z7unfvynl', {

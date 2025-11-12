@@ -16,16 +16,16 @@ const QuestLandingPage: React.FC = () => {
     // Add any additional logic you need when the button is clicked
   };
   
-  // Track affiliate click event
+  // Track affiliate click event (deferred to not block initial render)
   useEffect(() => {
     const refCode = searchParams.get('ref');
     
     if (refCode) {
-      // Save to localStorage
+      // Save to localStorage immediately (fast)
       localStorage.setItem('referred_by', refCode);
       console.log('✅ Affiliate ref saved:', refCode);
       
-      // Track click event
+      // Defer tracking API call until after page is interactive
       const trackClick = async () => {
         try {
           // Get user info
@@ -68,7 +68,14 @@ const QuestLandingPage: React.FC = () => {
         }
       };
       
-      trackClick();
+      // Use requestIdleCallback if available, otherwise setTimeout
+      if (typeof window !== 'undefined') {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(() => trackClick(), { timeout: 2000 });
+        } else {
+          setTimeout(() => trackClick(), 100);
+        }
+      }
     }
   }, [searchParams]);
 
