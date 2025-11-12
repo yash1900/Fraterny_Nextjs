@@ -1271,6 +1271,62 @@ const AdminSummaryManagement: React.FC = () => {
                       </div>
                     </div>
 
+                    {/* Question & Answer */}
+                    {(selectedSummaryDetails as any).question_answer && (
+                      <div className="bg-cyan-50 rounded-lg p-4">
+                        <h4 className="text-lg font-semibold text-gray-900 mb-3">Question & Answer</h4>
+                        <div className="text-sm text-gray-800 bg-white p-6 rounded-lg border border-gray-200 max-h-96 overflow-y-auto shadow-sm">
+                          {(() => {
+                            const qaText = (selectedSummaryDetails as any).question_answer;
+                            if (!qaText) return null;
+                            
+                            // Split by question pattern and format
+                            const lines = qaText.split(/\n(?=Question:)/g);
+                            
+                            return lines.map((block: string, index: number) => {
+                              if (!block.trim()) return null;
+                              
+                              // Extract question and answer
+                              const questionMatch = block.match(/Question:\s*(.+?)(?=\n|$)/s);
+                              const answerMatch = block.match(/Answer[:\s]+(.+?)(?=\[\]|$)/s);
+                              
+                              if (!questionMatch) return null;
+                              
+                              const question = questionMatch[1]?.trim();
+                              let answer = answerMatch?.[1]?.trim() || 'N/A';
+                              
+                              // Try to parse JSON answers and format them nicely
+                              try {
+                                const parsed = JSON.parse(answer);
+                                if (parsed.rankings && Array.isArray(parsed.rankings)) {
+                                  answer = `Rankings: ${parsed.rankings.map((r: any, i: number) => `${i + 1}. ${r.text}`).join(', ')}${parsed.explanation ? ` - Explanation: ${parsed.explanation}` : ''}`;
+                                } else if (typeof parsed === 'object') {
+                                  answer = JSON.stringify(parsed, null, 2);
+                                }
+                              } catch (e) {
+                                // Not JSON, keep as is
+                              }
+                              
+                              return (
+                                <div key={index} className="mb-5 pb-5 border-b border-gray-200 last:border-b-0 last:mb-0 last:pb-0">
+                                  <div className="flex items-start gap-2 mb-2">
+                                    <span className="flex-shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">
+                                      {index + 1}
+                                    </span>
+                                    <p className="font-semibold text-gray-900 leading-relaxed">{question}</p>
+                                  </div>
+                                  <div className="ml-8">
+                                    <p className="text-sm font-medium text-gray-500 mb-1">Answer:</p>
+                                    <p className="text-gray-700 leading-relaxed bg-gray-50 px-3 py-2 rounded">{answer}</p>
+                                  </div>
+                                </div>
+                              );
+                            });
+                          })()}
+                        </div>
+                      </div>
+                    )}
+
                     {/* Content Outputs */}
                     {((selectedSummaryDetails as any).brain_mapping || (selectedSummaryDetails as any).future_compass || (selectedSummaryDetails as any).content_output || (selectedSummaryDetails as any).thought) && (
                       <div className="bg-indigo-50 rounded-lg p-4">
