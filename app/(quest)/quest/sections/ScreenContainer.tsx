@@ -1,10 +1,35 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Hero, StatisticsSection, BenefitsSection, AnalyzeSection } from './index';
+import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import {useIsMobile} from '../utils/use-mobile';
-import { AnalyzeSidebar } from './AnalyzeSidebar';
+
+// Lazy load sections for better performance
+const Hero = dynamic(() => import('./index').then(mod => ({ default: mod.Hero })), {
+  loading: () => <div className="w-full h-screen flex items-center justify-center"><div className="animate-pulse">Loading...</div></div>,
+  ssr: true // Keep SSR for SEO
+});
+
+const StatisticsSection = dynamic(() => import('./index').then(mod => ({ default: mod.StatisticsSection })), {
+  loading: () => <div className="w-full h-screen"></div>,
+  ssr: false // Defer loading until needed
+});
+
+const BenefitsSection = dynamic(() => import('./index').then(mod => ({ default: mod.BenefitsSection })), {
+  loading: () => <div className="w-full h-screen"></div>,
+  ssr: false
+});
+
+const AnalyzeSection = dynamic(() => import('./index').then(mod => ({ default: mod.AnalyzeSection })), {
+  loading: () => <div className="w-full h-screen"></div>,
+  ssr: false
+});
+
+const AnalyzeSidebar = dynamic(() => import('./AnalyzeSidebar').then(mod => ({ default: mod.AnalyzeSidebar })), {
+  loading: () => null,
+  ssr: false
+});
 
 interface ScreenContainerProps {
   onAnalyzeClick?: () => void;
@@ -334,122 +359,133 @@ const scrollToSection = (sectionId: string) => {
   };
 
   return (
-    <div 
-      ref={containerRef}
-      className={`${getContainerClasses()}`}
-      style={getContainerStyles()}
-    >
-
-      <AnalyzeSidebar
-        isOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(false)}
-        theme="blue"
-        onNavigateToSection={navigateToSection}
-      />
-      
-      {/* Screen 1 - Hero */}
-      {current === 0 && (
-        <motion.div
-          key="screen1"
-          className='h-screen quest-background-hero'
-          variants={animationVariants}
-          initial="invisible"
-          animate="visible"
-          exit="invisible"
-        >
-          <Hero
-            onAnalyzeClick={handleAnalyzeClick}
-            className=" z-30"
+    <LazyMotion features={domAnimation} strict>
+      <div 
+        ref={containerRef}
+        className={`${getContainerClasses()}`}
+        style={getContainerStyles()}
+      >
+        <Suspense fallback={null}>
+          <AnalyzeSidebar
+            isOpen={isSidebarOpen}
+            onClose={() => setIsSidebarOpen(false)}
+            theme="blue"
+            onNavigateToSection={navigateToSection}
           />
-        </motion.div>
-      )}
+        </Suspense>
+        
+        {/* Screen 1 - Hero */}
+        {current === 0 && (
+          <m.div
+            key="screen1"
+            className='h-screen quest-background-hero'
+            variants={animationVariants}
+            initial="invisible"
+            animate="visible"
+            exit="invisible"
+          >
+            <Suspense fallback={<div className="w-full h-screen flex items-center justify-center"><div className="animate-pulse">Loading...</div></div>}>
+              <Hero
+                onAnalyzeClick={handleAnalyzeClick}
+                className=" z-30"
+              />
+            </Suspense>
+          </m.div>
+        )}
 
-      {/* Screen 2 - Statistics */}
-      {current === 1 && (
-        <AnimatePresence>
-          <motion.div
-            key="screen2"
+        {/* Screen 2 - Statistics */}
+        {current === 1 && (
+          <AnimatePresence>
+            <m.div
+              key="screen2"
+              className='h-screen'
+              variants={animationVariants}
+              initial="invisible"
+              animate="visible"
+              exit="invisible"
+            >
+              <Suspense fallback={<div className="w-full h-screen"></div>}>
+                <StatisticsSection
+                  animationState="visible"
+                  className="relative z-30"
+                  onLogoClick={handleLogoClick}
+                  onMenuClick={handleMenuClick}
+                />
+              </Suspense>
+            </m.div>
+          </AnimatePresence>
+        )}
+
+        {/* Screen 3 - Benefits */}
+        {current === 2 && (
+          <m.div
+            key="screen3"
             className='h-screen'
             variants={animationVariants}
             initial="invisible"
             animate="visible"
             exit="invisible"
           >
-            <StatisticsSection
-              animationState="visible"
-              className="relative z-30"
-              onLogoClick={handleLogoClick}
-              onMenuClick={handleMenuClick}
-            />
-          </motion.div>
-        </AnimatePresence>
-      )}
+            <Suspense fallback={<div className="w-full h-screen"></div>}>
+              <BenefitsSection
+                animationState="visible"
+                className="relative z-30"
+                onLogoClick={handleLogoClick}
+                onMenuClick={handleMenuClick}
+              />
+            </Suspense>
+          </m.div>
+        )}
 
-      {/* Screen 3 - Benefits */}
-      {current === 2 && (
-        <motion.div
-          key="screen3"
-          className='h-screen'
-          variants={animationVariants}
-          initial="invisible"
-          animate="visible"
-          exit="invisible"
-        >
-          <BenefitsSection
-            animationState="visible"
-            className="relative z-30"
-            onLogoClick={handleLogoClick}
-            onMenuClick={handleMenuClick}
-          />
-        </motion.div>
-      )}
-
-      {/* Screen 4 - Analyze (Scrollable with proper navigation) */}
-      {current === 3 && (
-        <motion.div
-          key="screen4"
-          className='h-screen overflow-hidden relative '
-          variants={animationVariants}
-          initial="invisible"
-          animate="visible"
-          exit="invisible"
-        >
-          <div
-            ref={analyzeScrollRef}
-            className="h-full overflow-y-auto overflow-x-hidden"
-            style={{
-              WebkitOverflowScrolling: 'touch'
-            } as React.CSSProperties}
+        {/* Screen 4 - Analyze (Scrollable with proper navigation) */}
+        {current === 3 && (
+          <m.div
+            key="screen4"
+            className='h-screen overflow-hidden relative '
+            variants={animationVariants}
+            initial="invisible"
+            animate="visible"
+            exit="invisible"
           >
-            <AnalyzeSection
-              animationState="visible"
-              className="relative z-30"
-              onLogoClick={handleLogoClick}
-              onNavigateToSection={navigateToSection}
-            />
-          </div>
-        </motion.div>
-      )}
+            <div
+              ref={analyzeScrollRef}
+              className="h-full overflow-y-auto overflow-x-hidden"
+              style={{
+                WebkitOverflowScrolling: 'touch'
+              } as React.CSSProperties}
+            >
+              <Suspense fallback={<div className="w-full h-screen"></div>}>
+                <AnalyzeSection
+                  animationState="visible"
+                  className="relative z-30"
+                  onLogoClick={handleLogoClick}
+                  onNavigateToSection={navigateToSection}
+                />
+              </Suspense>
+            </div>
+          </m.div>
+        )}
 
-      {/* Navigation indicator */}
-      {/* <div className={`fixed bottom-4 right-4 z-50 flex flex-col gap-2 ${isMobile ? '' : 'hidden'}`}>
-        {[0, 1, 2, 3].map((index) => (
-          <button
-            key={index}
-            onClick={() => {
-              if (!isTransitioning) {
-                setIsTransitioning(true);
-                setCurrent(index);
-              }
-            }}
-            className={`w-2 h-2 rounded-full transition-colors ${
-              current === index ? 'bg-blue-600' : 'bg-gray-200'
-            }`}
-          />
-        ))}
-      </div> */}
-      
-    </div>
+        {/* Navigation indicator */}
+        {/* <div className={`fixed bottom-4 right-4 z-50 flex flex-col gap-2 ${isMobile ? '' : 'hidden'}`}>
+          {[0, 1, 2, 3].map((index) => (
+            <button
+              key={index}
+              onClick={() => {
+                if (!isTransitioning) {
+                  setIsTransitioning(true);
+                  setCurrent(index);
+                }
+              }}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                current === index ? 'bg-blue-600' : 'bg-gray-200'
+              }`}
+            />
+          ))}
+        </div> */}
+        
+      </div>
+    </LazyMotion>
   );
 };
 
