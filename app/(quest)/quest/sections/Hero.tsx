@@ -1,9 +1,6 @@
 'use client';
 
-
 import React from 'react';
-import { motion } from 'framer-motion';
-import img from '../../../../public/Vector.svg';
 import {useIsMobile} from '../utils/use-mobile';
 import Link from 'next/link';
 import BrowserPopup from '../utils/BrowserPopup';
@@ -13,19 +10,6 @@ interface HeroProps {
   onScreenTransition?: () => void;
   className?: string;
 }
-
-// Simple animation variants like Code 1
-const animationVariants = {
-  invisible: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.6
-    }
-  }
-};
 
 const Hero: React.FC<HeroProps> = ({ 
   onAnalyzeClick, 
@@ -49,9 +33,7 @@ const Hero: React.FC<HeroProps> = ({
       
       <section className='w-screen border-2-red-500 h-full relative'>
 
-      <motion.div 
-        layoutId='bg'
-        transition={{ duration: 1.2 }}
+      <div 
         className='absolute z-0 w-[554px] h-[554px] rounded-full'
         style={{
           background: 'radial-gradient(ellipse 50% 50% at 50% 50%, #0C45F0 0%, #41D9FF 51%, #48B9D8 100%)',
@@ -67,31 +49,17 @@ const Hero: React.FC<HeroProps> = ({
       <div className='h-screen w-screen min-h-screen flex flex-col gap-20 relative top-[8%] pl-5'>
 
         <div className=' flex flex-col'>
-          <motion.div 
-            variants={animationVariants} 
-            initial="invisible" 
-            animate="visible"
-            className='justify-start text-neutral-950 text-5xl font-normal font-gilroy-regular'
-          >
+          <div className='justify-start text-neutral-950 text-5xl font-normal font-gilroy-regular'>
             hi there,
-          </motion.div>
+          </div>
 
           <div className='flex gap-2'>
-            <motion.div 
-            variants={animationVariants} 
-            initial="invisible" 
-            animate="visible"
-            className=""
-            >
+            <div className="">
               <div className='justify-start text-neutral-500 text-7xl font-bold font-gilroy-bold'>
                 I'm
               </div>
-            </motion.div>
-            <motion.div
-              layoutId='logo'
-              transition={{ duration: 1.2 }}
-              className="flex items-center"
-            >
+            </div>
+            <div className="flex items-center">
               {/* <img src={img} alt="Logo" className="mt-3" /> */}
               <div>
               <div className='text-7xl font-normal font-gilroy-bold tracking-[-0.5rem]'>
@@ -101,40 +69,24 @@ const Hero: React.FC<HeroProps> = ({
                 BY FRATERNY
               </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
         </div>
 
         <div className=' flex flex-col gap-0'>
-          <motion.div 
-            variants={animationVariants} 
-            initial="invisible" 
-            animate="visible"
-            className='justify-start text-neutral-950 text-4xl font-normal font-gilroy-regular'
-          >
+          <div className='justify-start text-neutral-950 text-4xl font-normal font-gilroy-regular'>
             I can
-          </motion.div>
-          <motion.div
-            variants={animationVariants}
-            initial="invisible"
-            animate="visible"
-            className=''
-          >
+          </div>
+          <div className=''>
             <span className='justify-start text-neutral-950 text-4xl font-normal font-gilroy-bold'>
               Analyse Your Brain
             </span>
-          </motion.div>
+          </div>
           
-          <motion.div 
-          variants={animationVariants} 
-          initial="invisible" 
-          animate="visible"
-        >
           <div className="justify-start text-neutral-950 text-4xl font-normal font-gilroy-regular">
             in 15 minutes
           </div>
-        </motion.div>
 
         </div>
         
@@ -161,20 +113,12 @@ const Hero: React.FC<HeroProps> = ({
       <section className='bg-sky-800 gap-1 h-screen flex flex-col items-center justify-center'>
       <div className=' flex flex-col w-full items-center justify-center'>
         <div className='flex gap-2'>
-          <motion.div 
-          initial="invisible" 
-          animate="visible"
-          className=""
-          >
+          <div className="">
             <div className='justify-center text-neutral-900 text-[200px] font-normal font-gilroy-bold'>
               I'm
             </div>
-          </motion.div>
-          <motion.div
-            layoutId='logo'
-            transition={{ duration: 1.2 }}
-            className="flex items-center"
-          >
+          </div>
+          <div className="flex items-center">
             <div>
             <div className='text-[180px] text-white font-normal font-gilroy-bold tracking-[-0.5rem]'>
               QUEST
@@ -183,7 +127,7 @@ const Hero: React.FC<HeroProps> = ({
               BY FRATERNY
             </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       
       </div>

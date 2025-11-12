@@ -1,54 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-// import { calculateDaysLeft as utilsCalculateDaysLeft } from '@/utils/dateUtils';
-// import { useReactQueryWebsiteSettings } from '@/hooks/useReactQueryWebsiteSettings';
-import { useSectionRevealAnimation } from './hooks/useSectionRevealAnimation';
 
 const HeroSection = () => {
-  const [daysLeft, setDaysLeft] = useState<number | null>(null);
 
   // Scroll-based parallax effects
   const { scrollYProgress } = useScroll();
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.9, 0.6]);
 
-  // Different scroll animations for different elements
-  const titleAnimation = useSectionRevealAnimation({
-    variant: 'slide-right',
-    once: false,
-    threshold: { desktop: 0.3, mobile: 0.2 },
-    duration: 0.8,
-    mobile: { variant: 'fade-up', duration: 0.6 }
-  });
-
-  const subtitleAnimation = useSectionRevealAnimation({
-    variant: 'fade-right',
-    once: false,
-    threshold: { desktop: 0.4, mobile: 0.3 },
-    delayChildren: 0.2,
-    duration: 0.6
-  });
-
-  //commented out ctaAnimation as it is not used in the current context
-
-  const ctaAnimation = useSectionRevealAnimation({
-  variant: 'fade-up',                            // ✅ Very subtle slide + fade
-  once: false,
-  threshold: { desktop: 0.6, mobile: 0.5 },
-  delayChildren: 0.3,
-  duration: 0.8
-});
-
-  const counterAnimation = useSectionRevealAnimation({
-    variant: 'fade-up',
-    once: false,
-    threshold: { desktop: 0.4, mobile: 0.3 },
-    delayChildren: 0.6,
-    duration: 0.6
-  });
+  // Simple fade animations - no complex scroll triggers for hero section
 
   // Use React Query powered hook for settings
   // const { settings, isLoading } = useReactQueryWebsiteSettings();
@@ -120,9 +81,9 @@ const HeroSection = () => {
       <motion.div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ y: backgroundY }}
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.3, ease: "easeOut" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
       >
         <picture>
           {/* Mobile image */}
@@ -159,67 +120,45 @@ const HeroSection = () => {
       <div className="mx-6 py-24 sm:py-32 relative z-10">
         <div className="max-w-2xl flex flex-col items-start justify-start gap-1">
           
-          {/* Title with scroll-triggered animation */}
-          <motion.div
-            ref={titleAnimation.ref}
-            variants={titleAnimation.parentVariants}
-            initial="hidden"
-            animate={titleAnimation.controls}
+          {/* Title with instant fade animation */}
+          <motion.h1 
+            className="text-left sm:text-center md:text-center lg:text-center xl:text-left text-4xl lg:text-7xl md:text-7xl font-playfair font-bold tracking-tight sm:mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <motion.h1 
-              className="text-left sm:text-center md:text-center lg:text-center xl:text-left text-4xl lg:text-7xl md:text-7xl font-playfair font-bold tracking-tight sm:mb-4 "
-              variants={titleAnimation.childVariants}
-            >
-              <motion.span
-                variants={titleAnimation.childVariants}
-                className='font-gilroy-light text-neutral-50'
-              >
-                Where{' '}
-              </motion.span>
-              <motion.span 
-                variants={titleAnimation.childVariants}
-                className='font-gilroy-bold text-neutral-100 italic'
-              >
-                Ambition
-              </motion.span>
-              <br />
-              <motion.span
-                variants={titleAnimation.childVariants}
-                  className='font-gilroy-light text-neutral-50'
-                >
-                Finds Its {' '}
-              </motion.span>
-              <motion.span 
-                variants={titleAnimation.childVariants}
-                className='font-gilroy-bold text-neutral-100 italic'
-              >
-                Tribe
-              </motion.span>
-            </motion.h1>
-          </motion.div>
+            <span className='font-gilroy-light text-neutral-50'>
+              Where{' '}
+            </span>
+            <span className='font-gilroy-bold text-neutral-100 italic'>
+              Ambition
+            </span>
+            <br />
+            <span className='font-gilroy-light text-neutral-50'>
+              Finds Its {' '}
+            </span>
+            <span className='font-gilroy-bold text-neutral-100 italic'>
+              Tribe
+            </span>
+          </motion.h1>
 
-          {/* Subtitle with separate scroll trigger */}
-          <motion.div
-            ref={subtitleAnimation.ref}
-            variants={subtitleAnimation.parentVariants}
-            initial="hidden"
-            animate={subtitleAnimation.controls}
+          {/* Subtitle with instant fade animation */}
+          <motion.p 
+            className="text-left sm:text-center md:text-center lg:text-center xl:text-left sm:text-lg md:text-xl text-gray-200 text-base mb-5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
-            <motion.p 
-              className="text-left sm:text-center md:text-center lg:text-center xl:text-left sm:text-lg md:text-xl text-gray-200 text-base mb-5"
-              variants={subtitleAnimation.childVariants}
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-            >
-              Surround yourself with the right people
-            </motion.p>
-          </motion.div>
+            Surround yourself with the right people
+          </motion.p>
 
-          {/* CTA Button with smooth fade-right animation */}
+          {/* CTA Button with instant fade animation */}
           <motion.div
             className="flex justify-start sm:justify-center md:justify-center lg:justify-center xl:justify-start mb-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.5 }}  // Simple 1s delay, 0.5s fade
+            transition={{ delay: 0.2, duration: 0.3, ease: "easeOut" }}
           >
             {/* <motion.a 
               href="https://docs.google.com/forms/d/1TTHQN3gG2ZtC26xlh0lU8HeiMc3qDJhfoU2tOh9qLQM/edit" 
@@ -235,36 +174,28 @@ const HeroSection = () => {
             </motion.a> */}
           </motion.div>
           
-          {/* Countdown with fade-up animation */}
+          {/* Countdown with instant fade animation */}
           <motion.div
-            ref={counterAnimation.ref}
-            variants={counterAnimation.parentVariants}
-            initial="hidden"
-            animate={counterAnimation.controls}
             className="text-center sm:text-center md:text-center lg:text-center xl:text-left"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.3, ease: "easeOut" }}
           >
-            <motion.div 
+            <div 
               className="bg-black bg-opacity-50 backdrop-blur-sm rounded-lg px-4 sm:px-6 py-3 sm:py-4 inline-block w-fit"
-              variants={counterAnimation.childVariants}
-              whileHover={{ 
-                scale: 1.02,
-                backgroundColor: "rgba(0, 0, 0, 0.6)"
-              }}
             >
-              <motion.p 
+              <p 
                 className="text-sm md:text-base text-gray-300 mb-1"
-                variants={counterAnimation.childVariants}
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
               >
                 Villa Registrations close in:
-              </motion.p>
-              {/* <motion.div 
+              </p>
+              {/* <div 
                 className="text-xl font-mono"
-                variants={counterAnimation.childVariants}
               >
                 {renderDaysLeft()}
-              </motion.div> */}
-            </motion.div>
+              </div> */}
+            </div>
           </motion.div>
         </div>
       </div>

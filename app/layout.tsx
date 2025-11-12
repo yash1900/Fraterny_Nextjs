@@ -225,6 +225,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preload hero images for faster LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-desktop.webp"
+          media="(min-width: 641px)"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-mobile.webp"
+          media="(max-width: 640px)"
+          fetchPriority="high"
+        />
         <Script
           id="website-jsonld"
           type="application/ld+json"
