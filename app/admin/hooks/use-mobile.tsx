@@ -39,16 +39,22 @@ function debounce<T extends (...args: any[]) => any>(
 }
 
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(() => {
-    // Initialize with actual value if window is available (client-side)
-    if (typeof window !== 'undefined') {
-      return window.innerWidth < MOBILE_BREAKPOINT;
-    }
-    return undefined; // SSR case
-  });
+  // Always initialize as false to ensure SSR and first client render match
+  const [isMobile, setIsMobile] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    // Only set up listener after initial mount
+    // Detect actual mobile state after mount
+    const initialValue = window.innerWidth < MOBILE_BREAKPOINT;
+    if (initialValue !== isMobile) {
+      console.log(`📱 [useIsMobile] Initial detection`, {
+        initialValue,
+        innerWidth: window.innerWidth,
+        timestamp: new Date().toISOString()
+      });
+      setIsMobile(initialValue);
+    }
+
+    // Set up listener for viewport changes
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
     
     const handleChange = () => {
@@ -67,20 +73,9 @@ export function useIsMobile() {
     // Debounce the change handler
     const debouncedChange = debounce(handleChange, DEBOUNCE_DELAY);
     
-    // Set initial value if not already set
-    if (isMobile === undefined) {
-      const initialValue = window.innerWidth < MOBILE_BREAKPOINT;
-      console.log(`📱 [useIsMobile] Initial detection`, {
-        initialValue,
-        innerWidth: window.innerWidth,
-        timestamp: new Date().toISOString()
-      });
-      setIsMobile(initialValue);
-    }
-    
     mql.addEventListener("change", debouncedChange);
     return () => mql.removeEventListener("change", debouncedChange);
-  }, [isMobile]); // Add isMobile to dependency array to check for actual changes
+  }, []); // Empty deps - run once after mount
 
   return isMobile;
 }
