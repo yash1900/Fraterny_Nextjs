@@ -170,50 +170,49 @@ export default {
         poppins: ["Poppins", "sans-serif"],
       },
       
-      keyframes: {
-        "fade-up": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(10px)",
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)",
-          },
-        },
-        "fade-down": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(-10px)",
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)",
-          },
-        },
-        "fade-in": {
-          "0%": {
-            opacity: "0",
-          },
-          "100%": {
-            opacity: "1",
-          },
-        },
-        // ADD THIS NEW AURORA ANIMATION
-        aurora: {
-          from: {
-            backgroundPosition: "50% 50%, 50% 50%",
-          },
-          to: {
-            backgroundPosition: "350% 50%, 350% 50%",
-          },
-        },
-      },
+      // keyframes: {
+      //   "fade-up": {
+      //     "0%": {
+      //       opacity: "0",
+      //       transform: "translateY(10px)",
+      //     },
+      //     "100%": {
+      //       opacity: "1",
+      //       transform: "translateY(0)",
+      //     },
+      //   },
+      //   "fade-down": {
+      //     "0%": {
+      //       opacity: "0",
+      //       transform: "translateY(-10px)",
+      //     },
+      //     "100%": {
+      //       opacity: "1",
+      //       transform: "translateY(0)",
+      //     },
+      //   },
+      //   "fade-in": {
+      //     "0%": {
+      //       opacity: "0",
+      //     },
+      //     "100%": {
+      //       opacity: "1",
+      //     },
+      //   },
+      //   // ADD THIS NEW AURORA ANIMATION
+      //   aurora: {
+      //     from: {
+      //       backgroundPosition: "50% 50%, 50% 50%",
+      //     },
+      //     to: {
+      //       backgroundPosition: "350% 50%, 350% 50%",
+      //     },
+      //   },
+      // },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
         "fade-down": "fade-down 0.5s ease-out",
         "fade-in": "fade-in 0.5s ease-out",
-        // ADD THIS NEW AURORA ANIMATION
         aurora: "aurora 60s linear infinite",
       },
     },

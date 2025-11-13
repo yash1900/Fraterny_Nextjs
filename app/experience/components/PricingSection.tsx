@@ -120,7 +120,6 @@ const PricingSection = ({ APPLICATION_FORM_URL, EXECUTIVE_ESCAPE_MAIL, prices }:
   const firstSectionHeaderAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7,
     staggerChildren: 0.2
   });
@@ -128,7 +127,6 @@ const PricingSection = ({ APPLICATION_FORM_URL, EXECUTIVE_ESCAPE_MAIL, prices }:
   const firstSectionFeaturesAnimation = useSectionRevealAnimation({
     variant: 'slide-up',
     once: true,
-    threshold: { desktop: 0.1, mobile: 0.05 },
     duration: 0.6,
     staggerChildren: 0.15,
     delayChildren: 0.2
@@ -137,7 +135,6 @@ const PricingSection = ({ APPLICATION_FORM_URL, EXECUTIVE_ESCAPE_MAIL, prices }:
   const firstSectionCtaAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.6, mobile: 0.5 },
     duration: 0.6
   });
 
@@ -145,7 +142,6 @@ const PricingSection = ({ APPLICATION_FORM_URL, EXECUTIVE_ESCAPE_MAIL, prices }:
   const secondSectionHeaderAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7,
     staggerChildren: 0.2
   });
@@ -153,7 +149,6 @@ const PricingSection = ({ APPLICATION_FORM_URL, EXECUTIVE_ESCAPE_MAIL, prices }:
   const secondSectionFeaturesAnimation = useSectionRevealAnimation({
     variant: 'slide-up',
     once: true,
-    threshold: { desktop: 0.1, mobile: 0.05 },
     duration: 0.6,
     staggerChildren: 0.15,
     delayChildren: 0.2
@@ -162,7 +157,6 @@ const PricingSection = ({ APPLICATION_FORM_URL, EXECUTIVE_ESCAPE_MAIL, prices }:
   const secondSectionCtaAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.6, mobile: 0.5 },
     duration: 0.6
   });
 
@@ -170,7 +164,6 @@ const PricingSection = ({ APPLICATION_FORM_URL, EXECUTIVE_ESCAPE_MAIL, prices }:
   const finalSectionAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.8,
     staggerChildren: 0.3
   });

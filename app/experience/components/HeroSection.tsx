@@ -15,15 +15,12 @@ const HeroSection = () => {
   const titleAnimation = useSectionRevealAnimation({
     variant: 'slide-right',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.8,
-    mobile: { variant: 'fade-up', duration: 0.6 }
   });
 
   const subtitleAnimation = useSectionRevealAnimation({
     variant: 'fade-right',
-    once: true,
-    threshold: { desktop: 0.4, mobile: 0.3 },
+    once: true,   
     delayChildren: 0.2,
     duration: 0.6
   });
@@ -31,7 +28,6 @@ const HeroSection = () => {
   const ctaAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.6, mobile: 0.5 },
     delayChildren: 0.3,
     duration: 0.8
   });

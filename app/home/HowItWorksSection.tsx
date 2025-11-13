@@ -31,7 +31,6 @@ const HowItWorksSection = () => {
   const titleAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: false,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7
   });
 
@@ -39,7 +38,6 @@ const HowItWorksSection = () => {
   const stepsAnimation = useSectionRevealAnimation({
     variant: 'slide-up',
     once: false,
-    threshold: { desktop: 0.2, mobile: 0.15 },
     duration: 0.6,
     staggerChildren: 0.2,
     delayChildren: 0.3
@@ -49,7 +47,6 @@ const HowItWorksSection = () => {
   const ctaAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: false,
-    threshold: { desktop: 0.6, mobile: 0.5 },
     duration: 0.6
   });
 

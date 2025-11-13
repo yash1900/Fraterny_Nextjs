@@ -11,7 +11,6 @@ const VillaLabSection = () => {
   const headerAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: false,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7,
     staggerChildren: 0.2
   });
@@ -20,7 +19,6 @@ const VillaLabSection = () => {
   const ctaAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: false,
-    threshold: { desktop: 0.6, mobile: 0.5 },
     duration: 0.6
   });
 
