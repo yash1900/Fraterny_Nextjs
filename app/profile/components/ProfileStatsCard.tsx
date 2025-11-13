@@ -25,8 +25,6 @@ export default function ProfileStatsCard({
   const { user, isLoading } = useAuth();
   const router = useRouter();
 
-  console.log("Rendering ProfileStatsCard:", { isLoading, user });
-
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
@@ -192,7 +190,7 @@ export default function ProfileStatsCard({
     <motion.div
       initial="hidden"
       animate="visible"
-      className={`bg-white mx-auto dark:bg-slate-900 rounded-xl border border-slate-200/50 dark:border-slate-700/50 shadow-sm overflow-hidden ${className}`}
+      className={` bg-white mx-auto dark:bg-slate-900 rounded-xl border border-slate-200/50 dark:border-slate-700/50 shadow-sm overflow-hidden ${className}`}
     >
       {/* Header */}
       <div className="bg-gradient-to-br from-cyan-600 to-blue-800 p-6 md:p-8 text-white">

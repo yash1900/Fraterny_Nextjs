@@ -368,7 +368,7 @@ useEffect(() => {
     <div className="min-h-screen bg-white">
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-navy text-white relative overflow-hidden">
+      <section className=" text-white relative overflow-hidden">
         
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">

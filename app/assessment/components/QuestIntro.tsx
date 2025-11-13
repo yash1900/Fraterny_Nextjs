@@ -73,7 +73,7 @@ export function QuestIntro({
     <section className='bg-sky-800 flex flex-col justify-between h-dvh overflow-hidden'>
 
       <div className='flex items-start pt-4 justify-center invert h-1/3'>
-        <Image src = './Vector.svg' alt = '' width={isMobile ? 150 : 250} height={isMobile ? 150 : 250} />
+        <Image src = './Vector.svg' alt = '' width={isMobile ? 120 : 50} height={isMobile ? 60 : 50} />
       </div>
 
       <div className=' pl-5 xs:pr-0 py-2'>
@@ -123,10 +123,16 @@ export function QuestIntro({
         <div className='w-full pr-3 pb-5'>
           <button
             onClick={handleStart}
-            className="pt-2 w-full h-14 mix-blend-luminosity bg-gradient-to-br from-white/20 to-white/20 rounded-[30px] border-2 border-white flex items-center justify-center leading-[1px]">
-            <div className='flex gap-0 items-center'>
+            className="w-full h-14 mix-blend-luminosity bg-gradient-to-br from-white/20 to-white/20 rounded-[30px] border-2 border-white flex items-center justify-center leading-[1px]">
+            <div className='flex gap-2 items-center'>
               <div className="w-full text-white text-2xl font-normal font-gilroy-bold tracking-tighter">{buttonText}</div>
-              <ChevronRight className="w-8 h-8 text-white" />
+              <motion.div
+                initial={{ x: 0 }}
+                animate={{ x: [0, 5, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              >
+                <ChevronRight className="w-7 h-7 text-white" />
+              </motion.div>
             </div>
           </button>
         </div>

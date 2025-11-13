@@ -64,8 +64,8 @@ const HeroSection = () => {
       
 
       {/* Hero Content */}
-      <div className=" mx-auto px-6 relative z-10">
-        <div className="max-w-3xl">
+      <div className="px-6 relative z-10">
+        <div className="">
           
           {/* Title with scroll-triggered animation */}
           <motion.div

@@ -7,6 +7,8 @@ import ProfileStatsCard from './components/ProfileStatsCard';
 import AccountSettings from './components/AccountSettings';
 import QuestHistory from './components/QuestHistory';
 import VillaApplicationSection from './components/VillaApplicationSection';
+import Navigation from '../website-navigation/components/Navigation';
+import Footer from '../website-navigation/components/Footer';
 
 const UserProfile = () => {
   const { activeTab } = useProfileContext();
@@ -36,9 +38,11 @@ const UserProfile = () => {
   
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="container p-6">
-        {renderTabContent()}
-      </div>
+      <Navigation />
+        <div className="p-6">
+          {renderTabContent()}
+        </div>
+      <Footer />
     </div>
   );
 };
