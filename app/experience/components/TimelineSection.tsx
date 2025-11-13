@@ -24,7 +24,6 @@ const TimelineSection = () => {
   const titleAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7,
     staggerChildren: 0.3
   });
@@ -33,7 +32,6 @@ const TimelineSection = () => {
   const cardsAnimation = useSectionRevealAnimation({
     variant: 'slide-up',
     once: true,
-    threshold: { desktop: 0.1, mobile: 0.05 },
     duration: 0.6,
     staggerChildren: 0.15,
     delayChildren: 0.2

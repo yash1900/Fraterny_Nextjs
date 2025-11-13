@@ -338,7 +338,6 @@ useEffect(() => {
   const heroTitleAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.8,
     staggerChildren: 0.3
   });
@@ -347,7 +346,6 @@ useEffect(() => {
   const pricingCardsAnimation = useSectionRevealAnimation({
     variant: 'slide-up',
     once: true,
-    threshold: { desktop: 0.1, mobile: 0.05 },
     duration: 0.6,
     staggerChildren: 0.2,
     delayChildren: 0.2

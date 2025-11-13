@@ -9,7 +9,6 @@ const NavalQuoteSection = () => {
   const quoteAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: false,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.8,
     staggerChildren: 0.4
   });
@@ -18,7 +17,6 @@ const NavalQuoteSection = () => {
   const supportingTextAnimation = useSectionRevealAnimation({
     variant: 'fade-left',
     once: false,
-    threshold: { desktop: 0.4, mobile: 0.3 },
     duration: 0.6,
     delayChildren: 0.2
   });
@@ -27,7 +25,6 @@ const NavalQuoteSection = () => {
   const statsAnimation = useSectionRevealAnimation({
     variant: 'scale-in',
     once: false,
-    threshold: { desktop: 0.5, mobile: 0.4 },
     duration: 0.6,
     staggerChildren: 0.3,
     delayChildren: 0.3

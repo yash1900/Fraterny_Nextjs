@@ -25,7 +25,6 @@ const AboutFratVilla = () => {
   const headerAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7,
     staggerChildren: 0.2
   });
@@ -34,7 +33,6 @@ const AboutFratVilla = () => {
   const secondHeaderAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.6
   });
 
@@ -42,7 +40,6 @@ const AboutFratVilla = () => {
   const featureCardsAnimation = useSectionRevealAnimation({
     variant: 'slide-up',
     once: true,
-    threshold: { desktop: 0.1, mobile: 0.05 },
     duration: 0.6,
     staggerChildren: 0.15,
     delayChildren: 0.2

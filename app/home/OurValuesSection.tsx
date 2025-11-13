@@ -8,7 +8,6 @@ const OurValuesSection = () => {
   const headerAnimation = useSectionRevealAnimation({
     variant: 'fade-up' as const,
     once: false,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7,
     staggerChildren: 0.3
   });
@@ -17,7 +16,6 @@ const OurValuesSection = () => {
   const cardsAnimation = useSectionRevealAnimation({
     variant: 'slide-up' as const,
     once: false,
-    threshold: { desktop: 0.2, mobile: 0.15 },
     duration: 0.6,
     staggerChildren: 0.2,
     delayChildren: 0.4
@@ -27,7 +25,6 @@ const OurValuesSection = () => {
   const ctaAnimation = useSectionRevealAnimation({
     variant: 'fade-up' as const,
     once: false,
-    threshold: { desktop: 0.7, mobile: 0.6 },
     duration: 0.6
   });
 
