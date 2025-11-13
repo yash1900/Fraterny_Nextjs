@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
-import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import {useIsMobile} from '../utils/use-mobile';
 
@@ -359,7 +359,6 @@ const scrollToSection = (sectionId: string) => {
   };
 
   return (
-    <LazyMotion features={domAnimation} strict>
       <div 
         ref={containerRef}
         className={`${getContainerClasses()}`}
@@ -376,7 +375,7 @@ const scrollToSection = (sectionId: string) => {
         
         {/* Screen 1 - Hero */}
         {current === 0 && (
-          <m.div
+          <motion.div
             key="screen1"
             className='h-screen quest-background-hero'
             variants={animationVariants}
@@ -390,13 +389,13 @@ const scrollToSection = (sectionId: string) => {
                 className=" z-30"
               />
             </Suspense>
-          </m.div>
+          </motion.div>
         )}
 
         {/* Screen 2 - Statistics */}
         {current === 1 && (
           <AnimatePresence>
-            <m.div
+            <motion.div
               key="screen2"
               className='h-screen'
               variants={animationVariants}
@@ -412,13 +411,13 @@ const scrollToSection = (sectionId: string) => {
                   onMenuClick={handleMenuClick}
                 />
               </Suspense>
-            </m.div>
+            </motion.div>
           </AnimatePresence>
         )}
 
         {/* Screen 3 - Benefits */}
         {current === 2 && (
-          <m.div
+          <motion.div
             key="screen3"
             className='h-screen'
             variants={animationVariants}
@@ -434,12 +433,12 @@ const scrollToSection = (sectionId: string) => {
                 onMenuClick={handleMenuClick}
               />
             </Suspense>
-          </m.div>
+          </motion.div>
         )}
 
         {/* Screen 4 - Analyze (Scrollable with proper navigation) */}
         {current === 3 && (
-          <m.div
+          <motion.div
             key="screen4"
             className='h-screen overflow-hidden relative '
             variants={animationVariants}
@@ -463,7 +462,7 @@ const scrollToSection = (sectionId: string) => {
                 />
               </Suspense>
             </div>
-          </m.div>
+          </motion.div>
         )}
 
         {/* Navigation indicator */}
@@ -485,7 +484,6 @@ const scrollToSection = (sectionId: string) => {
         </div> */}
         
       </div>
-    </LazyMotion>
   );
 };
 
