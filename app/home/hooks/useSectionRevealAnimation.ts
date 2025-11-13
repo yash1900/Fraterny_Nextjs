@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useMemo } from 'react';
+import { useRef, useEffect, useMemo, useState } from 'react';
 import { useAnimation, useInView, Variants } from 'framer-motion';
 
 // Animation variant types
@@ -313,8 +313,14 @@ export function useSectionRevealAnimation(config: ScrollAnimationConfig = {}) {
   const mergedConfig = useMemo(() => ({ ...defaultConfig, ...config }), [config]);
   
   const ref = useRef(null);
-  const isMobile = isMobileDevice();
-  const isReducedMotion = prefersReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  // Detect on client only to avoid SSR/client mismatch during hydration
+  useEffect(() => {
+    setIsMobile(isMobileDevice());
+    setIsReducedMotion(prefersReducedMotion());
+  }, []);
   
   // Determine the appropriate variant and settings
   const effectiveVariant = useMemo(() => {
