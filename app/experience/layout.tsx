@@ -118,7 +118,7 @@ export default function QuestLayout({
     ],
   };
   return (
-      <div>
+      <div className=''>
         <Script
           id="website-jsonld"
           type="application/ld+json"

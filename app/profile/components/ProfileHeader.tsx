@@ -88,18 +88,18 @@ const ProfileHeader = () => {
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6 max-w-7xl">
             {/* Profile image */}
-            <motion.div 
+            {/* <motion.div 
               className="w-24 h-24 font-gilroy-bold rounded-full bg-gray-200 border-4 border-white flex items-center justify-center text-navy text-2xl font-bold shadow-lg"
               variants={avatarVariants}
               whileHover="hover"
             >
               {displayName.charAt(0).toUpperCase()}
-            </motion.div>
+            </motion.div> */}
             
             {/* User info */}
             <div className="flex-1">
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-7xl font-gilroy-bold text-white mb-4"
+                className="text-4xl md:text-5xl lg:text-7xl font-gilroy-regular text-white mb-4"
                 variants={itemVariants}
               
               >
@@ -114,7 +114,7 @@ const ProfileHeader = () => {
               </motion.p> */}
               
               <motion.div 
-                className="text-lg md:text-xl lg:text-xl font-gilroy-regular flex items-center mt-2 text-gray-300"
+                className="text-lg md:text-xl lg:text-xl font-gilroy-medium flex items-center mt-2 text-neutral-300"
                 variants={itemVariants}
               >
                 <svg 

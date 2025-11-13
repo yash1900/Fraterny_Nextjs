@@ -1,111 +1,3 @@
-// 'use client'
-
-// import React from 'react';
-// import { motion } from 'framer-motion';
-// import useSectionRevealAnimation from '@/app/assessment/hooks/useSectionRevealAnimation';
-
-// const features = [
-//     {
-//       title: "Creates an Optimized Environment:",
-//       description: "The Fratvilla group is carefully selected based on the harmony, diversity, and thinking depth of their Quest results, ensuring a dynamic and supportive environment for all attendees."
-//     },
-//     {
-//       title: "Instills the Psychology of Success:",
-//       description: "Through a series of specially designed activities and the application of our \"Fratrules,\" you'll learn to embody the mindset of a high-achiever."
-//     },
-//     {
-//       title: "Fosters Genuine Connection:",
-//       description: "Fratvilla is designed to maximize personal growth and bonding, creating a powerful network of ambitious individuals who will support you long after the experience is over."
-//     }
-//   ];
-
-// const AboutFratVilla = () => {
-
-//   const firstSectionHeaderAnimation = useSectionRevealAnimation({
-//       variant: 'slide-up',
-//       once: false,
-//       threshold: { desktop: 0.3, mobile: 0.2 },
-//       duration: 0.7,
-//       staggerChildren: 0.2
-//     });
-    
-//   return (
-//     <section className="py-4 md:py-8 bg-white  ">
-//       <div className=" mx-auto px-6">
-//         <div className="max-w-7xl mx-auto">
-
-//           <motion.div
-//           ref={firstSectionHeaderAnimation.ref} 
-//                 variants={firstSectionHeaderAnimation.parentVariants}
-//                 initial="hidden"
-//                 animate={firstSectionHeaderAnimation.controls} >
-//             <h2
-//                 className="text-4xl md:text-5xl lg:text-7xl font-gilroy-regular mb-6 text-left md:text-left text-black"
-//             >
-//                 About FratVilla
-//             </h2>
-            
-//             <p 
-//                 className="text-xl md:text-xl lg:text-2xl font-gilroy-medium text-left mb-8 text-black"
-//             >
-//                 Fratvilla is our exclusive, hyper-luxurious 6-day experience for 20 ambitious 
-//                 individuals in a secret villa. It's an immersive, real-world application of the 
-//                 principles discovered through Quest, where you'll be surrounded by a curated 
-//                 group of like-minded peers.
-//             </p>
-//           </motion.div>
-
-
-//             <motion.section className=" bg-white rounded-xl max-w-7xl"
-//             ref={firstSectionHeaderAnimation.ref} 
-//                 variants={firstSectionHeaderAnimation.parentVariants}
-//                 initial="hidden"
-//                 animate={firstSectionHeaderAnimation.controls} >
-
-
-//                 <div className="max-w-7xl mx-auto">
-//                     <div className=" text-center">
-//                         <h2 
-//                 className="text-4xl md:text-5xl lg:text-7xl font-gilroy-regular mb-6 text-left md:text-left text-black"
-//             >
-//                 What FratVilla Does
-//             </h2>
-
-//                     {/* Feature Boxes */}
-//                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-//                         {features.map((feature, index) => (
-//                         <motion.div 
-                            
-                            
-//                             key={index}
-//                             className="bg-white/10 backdrop-blur-md rounded-xl p-6 md:p-8 text-left border border-white/20 shadow-xl hover:bg-white/20 hover:border-white/30 hover:shadow-2xl transition-all duration-300 "
-//                         >
-//                             <h3 
-//                             className="text-xl md:text-2xl lg:text-3xl font-gilroy-bold text-neutral-900 sm:h-16 md:h-28 lg:h-24 lg:mb-4"
-//                             >
-//                             {feature.title}
-//                             </h3>
-//                             <p 
-//                             className="text-lg font-gilroy-regular md:text-xl lg:text-xl text-black mt-4"
-//                             >
-//                             {feature.description}
-//                             </p>
-//                         </motion.div>
-//                         ))}
-//                     </div>
-//                     </div>
-//                 </div>
-//             </motion.section>
-
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default AboutFratVilla;
-
-
 'use client'
 
 import React from 'react';
@@ -114,7 +6,7 @@ import useSectionRevealAnimation from '@/app/assessment/hooks/useSectionRevealAn
 
 const features = [
     {
-      title: "Creates an Optimized Environment:",
+      title: "Creates an Environment:",
       description: "The Fratvilla group is carefully selected based on the harmony, diversity, and thinking depth of their Quest results, ensuring a dynamic and supportive environment for all attendees."
     },
     {
@@ -185,7 +77,7 @@ const AboutFratVilla = () => {
   };
     
   return (
-    <section className="py-4 md:py-8 bg-white">
+    <section className="py-4 bg-white">
       <div className="mx-auto px-6">
         <div className="max-w-7xl mx-auto">
 
@@ -197,14 +89,14 @@ const AboutFratVilla = () => {
             animate={headerAnimation.controls}
           >
             <motion.h2
-              className="text-4xl md:text-5xl lg:text-7xl font-gilroy-regular mb-6 text-left md:text-left text-black"
+              className="text-3xl sm:text-3xl md:text-4xl font-gilroy-semibold mb-3 sm:mb-4"
               variants={headerAnimation.childVariants}
             >
               About FratVilla
             </motion.h2>
             
             <motion.p 
-              className="text-xl md:text-xl lg:text-2xl font-gilroy-medium text-left mb-8 text-black"
+              className="text-lg md:text-xl md:leading-[-10px] lg:text-xl font-gilroy-regular text-left mb-8 text-black"
               variants={headerAnimation.childVariants}
             >
               Fratvilla is our exclusive, hyper-luxurious 6-day experience for 20 ambitious 
@@ -217,7 +109,7 @@ const AboutFratVilla = () => {
           {/* Second Section - What FratVilla Does */}
           <section className="bg-white rounded-xl max-w-7xl">
             <div className="max-w-7xl mx-auto">
-              <div className="text-center">
+              <div className="text-left">
                 {/* Section Title */}
                 <motion.div
                   ref={secondHeaderAnimation.ref}
@@ -226,7 +118,7 @@ const AboutFratVilla = () => {
                   animate={secondHeaderAnimation.controls}
                 >
                   <motion.h2 
-                    className="text-4xl md:text-5xl lg:text-7xl font-gilroy-regular mb-6 text-left md:text-left text-black"
+                    className="text-3xl sm:text-3xl md:text-4xl font-gilroy-semibold mb-3 sm:mb-4"
                     variants={secondHeaderAnimation.childVariants}
                   >
                     What FratVilla Does
@@ -235,7 +127,7 @@ const AboutFratVilla = () => {
 
                 {/* Feature Cards with staggered animation */}
                 <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
+                  className="grid grid-cols-1 md:grid-cols-3 gap-6"
                   ref={featureCardsAnimation.ref}
                   variants={featureCardsAnimation.parentVariants}
                   initial="hidden"
@@ -245,20 +137,21 @@ const AboutFratVilla = () => {
                     <motion.div
                       key={index}
                       variants={featureCardsAnimation.childVariants}
+                      className=''
                     >
                       <motion.div 
-                        className="bg-white/10 backdrop-blur-md rounded-xl p-6 md:p-8 text-left border border-white/20 shadow-xl hover:bg-white/20 hover:border-white/30 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                        className="backdrop-blur-md h-full rounded-xl p-6 md:p-8 text-left border border-white/20 shadow-xl hover:bg-white/20 hover:border-white/30 hover:shadow-2xl transition-all duration-300 cursor-pointer"
                         variants={cardVariants}
                         whileHover="hover"
                       >
                         <h3 
-                          className="text-xl md:text-2xl lg:text-3xl font-gilroy-bold text-neutral-900 sm:h-16 md:h-28 lg:h-24 lg:mb-4"
+                          className="text-xl md:text-xl lg:text-2xl font-gilroy-bold text-neutral-700 tracking-tighter"
                         >
                           {feature.title}
                         </h3>
                         
                         <p 
-                          className="text-lg font-gilroy-regular md:text-xl lg:text-xl text-black mt-4 h-36 mb-8"
+                          className="text-[16px] font-gilroy-regular md:text-xl lg:text-xl text-black mt-4 mb-8"
                         >
                           {feature.description}
                         </p>

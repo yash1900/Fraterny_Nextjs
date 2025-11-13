@@ -104,7 +104,7 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
           <Image 
             src='/Vector.svg'
             alt="QUEST" 
-            width={144}
+            width={36}
             height={36}
             className={`transition-all duration-500 ease-out cursor-pointer ${isInHeroSection ? 'brightness-0 invert' : 'opacity-0'}`}
             onClick={_onLogoClick}

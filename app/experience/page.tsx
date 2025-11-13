@@ -14,7 +14,7 @@ import PricingSection from './components/PricingSection'
 import Pricing from './components/Pricing'
 
 const page = () => {
-  const isMobile = useIsMobile()
+
   return (
     <div>
       <Navigation />
