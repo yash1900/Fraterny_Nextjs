@@ -37,12 +37,14 @@ const UserProfile = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div>
+    <div className="min-h-screen max-w-7xl mx-auto">
       <Navigation />
         <div className="p-6">
           {renderTabContent()}
         </div>
-      <Footer />
+    </div>
+    <Footer />
     </div>
   );
 };

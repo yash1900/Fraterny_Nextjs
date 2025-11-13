@@ -57,10 +57,10 @@ export default function BlogPostClient({ post }: Props) {
   return (
     <div className="min-h-screen">
       <div className="bg-black w-full h-[69px]"></div>
-      
-      <article className="container mx-auto px-4 sm:px-6 pt-12 pb-10">
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm p-8">
-          <Link href="/blog" className="inline-flex items-center text-navy hover:text-terracotta mb-8">
+
+      <article className="px-4 sm:px-6 pt-12 pb-10">
+        <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm p-8">
+          <Link href="/blog" className="inline-flex items-center text-navy hover:text-neutral-900 mb-8">
             <ArrowLeft size={16} className="mr-2" />
             Back to all posts
           </Link>
@@ -121,7 +121,7 @@ export default function BlogPostClient({ post }: Props) {
       </article>
       
       <div className="container mx-auto px-4 sm:px-6 pb-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <NewsletterSignup />
         </div>
       </div>

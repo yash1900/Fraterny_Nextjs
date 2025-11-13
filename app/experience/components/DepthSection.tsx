@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Code, Brain, BookOpen, FileCheck, Users, Heart, ChefHat, Users2 } from 'lucide-react';
 import ResponsiveImage from '@/components/ui/ResponsiveImage';
-import { useIsMobile } from '@/app/admin/hooks/use-mobile';
 
 
 const useSectionRevealAnimation = (config: any) => {
@@ -128,49 +127,37 @@ const depthFeatures = [
 ];
 
 const DepthSection = () => {
-  const isMobile = useIsMobile();
   const [loadedImages, setLoadedImages] = useState(new Set());
 
-  // Progressive image loading for mobile view
+  // Progressive image loading
   useEffect(() => {
-    if (isMobile) {
-      const loadImage = (index: number) => {
-        setTimeout(() => {
-          setLoadedImages(prev => new Set(prev).add(index));
-        }, 600 + (index * 300));
-      };
+    const loadImage = (index: number) => {
+      setTimeout(() => {
+        setLoadedImages(prev => new Set(prev).add(index));
+      }, 600 + (index * 300));
+    };
 
-      depthFeatures.forEach((_, index) => {
-        loadImage(index);
-      });
-    }
-  }, [isMobile]);
+    depthFeatures.forEach((_, index) => {
+      loadImage(index);
+    });
+  }, []);
 
   // Section title animation
   const titleAnimation = useSectionRevealAnimation({
     variant: 'fade-up' as const,
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
+    threshold: 0.3,
     duration: 0.7
   });
 
-  // Desktop grid animation
-  const desktopGridAnimation = useSectionRevealAnimation({
+  // Grid animation (works for both mobile and desktop via CSS)
+  const gridAnimation = useSectionRevealAnimation({
     variant: 'slide-up' as const,
     once: true,
-    threshold: { desktop: 0.2, mobile: 0.15 },
+    threshold: 0.2,
     duration: 0.6,
     staggerChildren: 0.12,
     delayChildren: 0.2
-  });
-
-  // Mobile cards animation
-  const mobileCardsAnimation = useSectionRevealAnimation({
-    variant: 'fade-up' as const,
-    once: true,
-    threshold: { desktop: 0.2, mobile: 0.1 },
-    duration: 0.5,
-    staggerChildren: 0.2
   });
 
   // Feature card variants
@@ -222,8 +209,8 @@ const DepthSection = () => {
   };
 
   return (
-    <section className={`${isMobile ? 'pt-6 pb-16' : 'py-4 md:py-8'} bg-white`}>
-      <div className=" max-w-7xl mx-auto px-4">
+    <section className="py-4 md:py-8 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
         
         {/* Section Title */}
         <motion.div
@@ -240,181 +227,60 @@ const DepthSection = () => {
           </motion.h2>
         </motion.div>
         
-        {isMobile ? (
-          /* MOBILE LAYOUT: Alternating cards and images */
-          <motion.div 
-            className="space-y-6 px-4"
-            ref={mobileCardsAnimation.ref}
-            variants={mobileCardsAnimation.parentVariants}
-            initial="hidden"
-            animate={mobileCardsAnimation.controls}
-          >
-            {depthFeatures.map((feature, index) => (
-              <React.Fragment key={index}>
-                {/* Feature Card */}
-                <motion.div 
-                  className="flex flex-col items-start text-center bg-white backdrop-blur-md rounded-xl p-6 md:p-8 border border-cyan-700/20 shadow-lg hover:shadow-xl transition-all duration-500"
-                  variants={featureCardVariants}
-                  whileHover="hover"
-                >
-                  {/* Icon with animation */}
-                  <motion.div 
-                    className="bg-black p-4 rounded-full mb-4 group-hover:bg-cyan-400/30 transition-colors"
-                    variants={iconVariants}
-                    initial="hidden"
-                    animate={mobileCardsAnimation.isInView ? "visible" : "hidden"}
-                  >
-                    <div className="text-white text-left">{feature.icon}</div>
-                  </motion.div>
-                  
-                  {/* Text content */}
-                  <motion.h3 
-                    className="text-xl md:text-2xl lg:text-3xl text-black mb-3 font-gilroy-bold"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ 
-                      opacity: mobileCardsAnimation.isInView ? 1 : 0,
-                      y: mobileCardsAnimation.isInView ? 0 : 20
-                    }}
-                    transition={{ 
-                      delay: 0.3 + (index * 0.1),
-                      duration: 0.5
-                    }}
-                  >
-                    {feature.title}
-                  </motion.h3>
-                  
-                  <motion.p 
-                    className="text-lg text-left font-gilroy-regular md:text-xl lg:text-xl"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ 
-                      opacity: mobileCardsAnimation.isInView ? 1 : 0,
-                      y: mobileCardsAnimation.isInView ? 0 : 20
-                    }}
-                    transition={{ 
-                      delay: 0.4 + (index * 0.1),
-                      duration: 0.5
-                    }}
-                  >
-                    {feature.description}
-                  </motion.p>
-                </motion.div>
-                
-                {/* Feature Image with loading state */}
-                <motion.div 
-                  className="aspect-[16/9] w-full overflow-hidden rounded-xl shadow-xl relative border border-white/20"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ 
-                    opacity: mobileCardsAnimation.isInView ? 1 : 0,
-                    x: mobileCardsAnimation.isInView ? 0 : -30
-                  }}
-                  transition={{ 
-                    delay: 0.5 + (index * 0.1),
-                    duration: 0.6
-                  }}
-                >
-                  {/* Loading state for mobile images */}
-                  {!loadedImages.has(index) && (
-                    <motion.div 
-                      className="absolute inset-0 bg-cyan-700/30 flex items-center justify-center"
-                      initial={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="relative">
-                        <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
-                        <motion.div 
-                          className="absolute inset-0 w-8 h-8 border-4 border-cyan-300/20 rounded-full"
-                          animate={{ 
-                            scale: [1, 1.3, 1],
-                            opacity: [0.3, 0.1, 0.3]
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        />
-                      </div>
-                    </motion.div>
-                  )}
-                  
-                  {/* Image */}
-                  <motion.div
-                    className={`transition-opacity duration-500 ${
-                      loadedImages.has(index) ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    initial={{ scale: 1.05 }}
-                    animate={{ scale: loadedImages.has(index) ? 1 : 1.05 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                  >
-                    <ResponsiveImage 
-                      dynamicKey={feature.dynamicKey}
-                      alt={feature.imageAlt}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </motion.div>
-                </motion.div>
-              </React.Fragment>
-            ))}
-          </motion.div>
-        ) : (
-          /* DESKTOP LAYOUT: 3-column grid */
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 "
-            ref={desktopGridAnimation.ref}
-            variants={desktopGridAnimation.parentVariants}
-            initial="hidden"
-            animate={desktopGridAnimation.controls}
-          >
-            {depthFeatures.map((feature, index) => (
+        {/* Unified responsive grid - no JS device detection */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          ref={gridAnimation.ref}
+          variants={gridAnimation.parentVariants}
+          initial="hidden"
+          animate={gridAnimation.controls}
+        >
+          {depthFeatures.map((feature, index) => (
+            <motion.div 
+              key={index} 
+              className="flex flex-col items-start bg-white backdrop-blur-md rounded-xl p-6 md:p-6 border border-cyan-700/20 shadow-lg hover:shadow-xl transition-all duration-500"
+            >
+              {/* Icon with animation */}
               <motion.div 
-                key={index} 
-                className={`flex flex-col items-start bg-white backdrop-blur-md rounded-xl p-4 md:p-4 text-center border border-neutral-200 shadow-lg hover:shadow-xl transition-all duration-500`}
+                className="bg-black p-4 rounded-full mb-4 border border-neutral-200"
+                suppressHydrationWarning
               >
-                {/* Icon with animation */}
-                <motion.div 
-                  className="bg-black p-4 rounded-full mb-4"
-                  initial="hidden"
-                  animate={desktopGridAnimation.isInView ? "visible" : "hidden"}
-                >
-                  <div className="text-white">{feature.icon}</div>
-                </motion.div>
-                
-                {/* Text content */}
-                <motion.h3 
-                  className={`text-xl md:text-2xl lg:text-3xl font-gilroy-bold text-black text-left sm:h-16 md:h-28 lg:h-12 lg:mb-4 ${index === 6 ? 'lg:mb-24' : ''}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ 
-                    opacity: desktopGridAnimation.isInView ? 1 : 0,
-                    y: desktopGridAnimation.isInView ? 0 : 20
-                  }}
-                  transition={{ 
-                    delay: 0.3 + (index * 0.05),
-                    duration: 0.5
-                  }}
-                >
-                  {feature.title}
-                </motion.h3>
-                
-                <motion.p 
-                  className="text-lg font-gilroy-regular md:text-xl lg:text-xl text-left"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ 
-                    opacity: desktopGridAnimation.isInView ? 1 : 0,
-                    y: desktopGridAnimation.isInView ? 0 : 20
-                  }}
-                  transition={{ 
-                    delay: 0.4 + (index * 0.05),
-                    duration: 0.5
-                  }}
-                >
-                  {feature.description}
-                </motion.p>
+                <div className="text-white">{feature.icon}</div>
               </motion.div>
-            ))}
-          </motion.div>
-        )}
+              
+              {/* Text content */}
+              <motion.h3 
+                className="text-lg md:text-xl lg:text-2xl mb-2 font-gilroy-bold text-neutral-700 text-left"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: gridAnimation.isInView ? 1 : 0,
+                  y: gridAnimation.isInView ? 0 : 20
+                }}
+                transition={{ 
+                  delay: 0.3 + (index * 0.05),
+                  duration: 0.5
+                }}
+              >
+                {feature.title}
+              </motion.h3>
+              
+              <motion.p 
+                className="text-base font-gilroy-regular md:text-base lg:text-lg text-left"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: gridAnimation.isInView ? 1 : 0,
+                  y: gridAnimation.isInView ? 0 : 20
+                }}
+                transition={{ 
+                  delay: 0.4 + (index * 0.05),
+                  duration: 0.5
+                }}
+              >
+                {feature.description}
+              </motion.p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

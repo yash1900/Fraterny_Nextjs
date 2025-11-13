@@ -17,6 +17,7 @@ import { useAuth } from '../../auth/cotexts/AuthContext';
 import { ADMIN_NAV_LINKS } from '../constants/constants';
 import { toast } from 'sonner';
 
+
 interface UserMenuProps {
   isScrolled: boolean;
 }
@@ -67,12 +68,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ isScrolled }) => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-48">
-        <DropdownMenuLabel className="text-sm px-4">
-          <Link href="/profile" className="flex items-center space-x-2 hover:text-primary">
+        <DropdownMenuLabel className="">
+          <Link href="/profile" className="flex items-center hover:text-primary text-xl text-gilroy-medium tracking-tighter">
+            <User size={16} className="mr-2" />
             Your Profile
           </Link>
           <div className="text-xs text-gray-500 mt-1">
-            {isAdmin ? 'Administrator' : 'User'}
+            {isAdmin ? 'Administrator' : ''}
           </div>
         </DropdownMenuLabel>
 
@@ -95,7 +97,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ isScrolled }) => {
 
         <DropdownMenuItem
           onClick={handleSignOut}
-          className="cursor-pointer"
+          className="cursor-pointer text-xl text-gilroy-medium tracking-tighter"
           disabled={loading}
         >
           <LogOut size={16} className="mr-2" />

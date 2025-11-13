@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { supabaseAdmin } from '@/lib/supabase-admin';
 import BlogPostClient from './BlogPostClient';
+import Navigation from '@/app/website-navigation/components/Navigation';
+import Footer from '@/app/website-navigation/components/Footer';
 
 type BlogPost = {
   id: string;
@@ -141,5 +143,11 @@ export default async function BlogPostPage({ params }: Props) {
   // Serialize the post data to plain object for client component
   const serializedPost = JSON.parse(JSON.stringify(post));
 
-  return <BlogPostClient post={serializedPost} />;
+  return (
+    <div>
+      <Navigation />
+      <BlogPostClient post={serializedPost} />
+      <Footer />
+    </div>
+  );
 }

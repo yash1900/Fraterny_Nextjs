@@ -11,7 +11,6 @@ const Footer = () => {
   const footerAnimation = useSectionRevealAnimation({
     variant: 'fade-up' as const,
     once: false,
-    threshold: { desktop: 0.2, mobile: 0.1 },
     duration: 0.7,
     staggerChildren: 0.15,
     delayChildren: 0.1
@@ -21,7 +20,6 @@ const Footer = () => {
   const copyrightAnimation = useSectionRevealAnimation({
     variant: 'fade-up' as const,
     once: false,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.6,
     staggerChildren: 0.1,
     delayChildren: 0.3

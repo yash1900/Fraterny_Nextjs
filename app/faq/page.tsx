@@ -10,6 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { motion } from 'framer-motion';
 
 const FAQ = () => {
   const faqs = [
@@ -73,7 +74,7 @@ const FAQ = () => {
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-sky-950 text-white">
-        <div className="container mx-auto px-6">
+        <motion.div className="px-6">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-gilroy-regular mb-6">
               Frequently Asked <span className='text-white font-gilroy-semibold'>Questions</span>
@@ -82,12 +83,12 @@ const FAQ = () => {
               Everything you need to know about the Fraterny experience
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* FAQ Section */}
       <section className="py-16">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="px-6 max-w-7xl mx-auto">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem 

@@ -85,7 +85,7 @@ const ProfileHeader = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="container mx-auto">
+        <div className="px-6 mx-auto">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6 max-w-7xl">
             {/* Profile image */}
             {/* <motion.div 
@@ -99,7 +99,7 @@ const ProfileHeader = () => {
             {/* User info */}
             <div className="flex-1">
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-7xl font-gilroy-regular text-white mb-4"
+                className="text-3xl md:text-5xl lg:text-7xl font-gilroy-regular mb-4 text-white"
                 variants={itemVariants}
               
               >

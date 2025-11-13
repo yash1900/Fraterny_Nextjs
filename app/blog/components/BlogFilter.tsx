@@ -43,16 +43,12 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
   if (categories.length === 0 && tags.length === 0) {
     return (
       <motion.div 
-        className="mb-8 bg-white rounded-lg p-6 shadow-sm"
-        variants={slideFromLeft}
-        custom={0}
-        initial="hidden"
-        animate="visible"
+        className="mb-8 bg-red-900 rounded-lg p-6 shadow-sm"
       >
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-4">
             <Search className="h-5 w-5 text-navy" />
-            <h2 className="text-xl font-semibold text-navy" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>Search Posts</h2>
+            <h2 className="text-xl font-gilroy-semibold text-navy">Search Posts</h2>
           </div>
           <Input
             type="search"
@@ -71,7 +67,7 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
 
   return (
     <motion.div 
-      className="mb-8 bg-white rounded-lg p-6 shadow-sm"
+      className="mb-8 bg-white max-w-7xl mx-auto rounded-lg p-6 shadow-sm"
       variants={slideFromLeft}
       custom={0}
       initial="hidden"
@@ -87,13 +83,13 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
       >
         <div className="flex items-center gap-2 mb-4">
           <Search className="h-5 w-5 text-navy" />
-          <h2 className="text-xl font-semibold text-navy" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>Search Posts</h2>
+          <h2 className="text-xl font-gilroy-semibold text-navy">Search Posts</h2>
         </div>
         <Input
           type="search"
           placeholder="Search blog posts..."
           onChange={(e) => onSearch(e.target.value)}
-          className="max-w-md"
+          className="max-w-md font-gilroy-regular"
         />
       </motion.div>
 
@@ -108,12 +104,12 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
         >
           <div className="flex items-center gap-2 mb-4">
             <Filter className="h-5 w-5 text-navy" />
-            <h2 className="text-xl font-semibold text-navy" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>Filter by Category</h2>
+            <h2 className="text-xl font-gilroy-semibold text-navy">Filter by Category</h2>
           </div>
           
           <div className="flex flex-wrap gap-3">
             <motion.button 
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+              className={`px-4 py-2 rounded-full text-sm font-gilroy-regular transition-colors duration-200 ${
                 !selectedCategory 
                   ? 'bg-navy text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -123,7 +119,6 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
               custom={3}
               initial="hidden"
               animate="visible"
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
               All Categories
             </motion.button>
@@ -131,7 +126,7 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
             {categories.map((category, index) => (
               <motion.button 
                 key={category} 
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                className={`px-4 py-2 rounded-full text-sm font-gilroy-regular transition-colors duration-200 ${
                   selectedCategory === category 
                     ? 'bg-navy text-white' 
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -141,7 +136,6 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
                 custom={4 + index}
                 initial="hidden"
                 animate="visible"
-                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {category}
               </motion.button>
@@ -161,7 +155,7 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
         >
           <div className="flex items-center gap-2 mb-4">
             <Tag className="h-5 w-5 text-black" />
-            <h2 className="text-xl font-semibold text-navy" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>Filter by Tags</h2>
+            <h2 className="text-xl font-gilroy-semibold text-navy">Filter by Tags</h2>
           </div>
           
           {/* Desktop View - Button Grid */}
@@ -184,7 +178,7 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
             {tags.map((tag, index) => (
               <motion.button 
                 key={tag} 
-                className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 ${
+                className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 font-gilroy-regular ${
                   selectedTag === tag 
                     ? 'bg-black text-white' 
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'

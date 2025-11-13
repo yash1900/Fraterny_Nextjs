@@ -140,7 +140,7 @@ const BlogList: React.FC<BlogListProps> = ({
   if (posts !== undefined && posts !== null && posts.length === 0) {
     return (
       <motion.div 
-        className="text-center py-20"
+        className="text-center py-20 max-w-7xl mx-auto"
         initial="hidden"
         animate="visible"
       >
@@ -188,7 +188,7 @@ const BlogList: React.FC<BlogListProps> = ({
   }
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 max-w-7xl mx-auto">
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
         initial="hidden"

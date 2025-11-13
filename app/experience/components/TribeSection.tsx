@@ -116,7 +116,6 @@ const TribeSection = () => {
   const journeyTitleAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7
   });
 
@@ -124,7 +123,6 @@ const TribeSection = () => {
   const journeyStepsAnimation = useSectionRevealAnimation({
     variant: 'slide-up',
     once: true,
-    threshold: { desktop: 0.1, mobile: 0.05 },
     duration: 0.6,
     staggerChildren: 0.15,
     delayChildren: 0.2
@@ -134,7 +132,6 @@ const TribeSection = () => {
   const timelineTitleAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7
   });
 
@@ -142,7 +139,6 @@ const TribeSection = () => {
   const timelineAnimation = useSectionRevealAnimation({
     variant: 'slide-up',
     once: true,
-    threshold: { desktop: 0.1, mobile: 0.05 },
     duration: 0.6,
     staggerChildren: 0.15,
     delayChildren: 0.2
@@ -152,7 +148,6 @@ const TribeSection = () => {
   const tribeTitleAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.3, mobile: 0.2 },
     duration: 0.7
   });
 
@@ -160,7 +155,6 @@ const TribeSection = () => {
   const profilesAnimation = useSectionRevealAnimation({
     variant: 'scale-in',
     once: true,
-    threshold: { desktop: 0.2, mobile: 0.15 },
     duration: 0.6,
     staggerChildren: 0.15,
     delayChildren: 0.2
@@ -170,7 +164,6 @@ const TribeSection = () => {
   const taglineAnimation = useSectionRevealAnimation({
     variant: 'fade-up',
     once: true,
-    threshold: { desktop: 0.6, mobile: 0.5 },
     duration: 0.8
   });
 
@@ -272,7 +265,7 @@ const TribeSection = () => {
                     >
                       <div className="flex items-center gap-3 mb-4">
                         <h3 
-                          className="text-xl md:text-xl lg:text-2xl font-gilroy-bold text-neutral-700 tracking-tighter"
+                          className="text-xl md:text-xl lg:text-2xl font-gilroy-bold text-black tracking-tighter"
                         >
                           {step.title}
                         </h3>
@@ -342,7 +335,7 @@ const TribeSection = () => {
                         </span>
                       </div>
                       <h3 
-                        className="text-xl md:text-2xl font-gilroy-bold text-neutral-700 italic h-20 mb-3"
+                        className="text-xl md:text-2xl font-gilroy-bold text-black italic h-20 mb-3"
                       >
                         {event.title}
                       </h3>
