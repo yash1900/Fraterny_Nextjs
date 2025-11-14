@@ -538,7 +538,7 @@ else if (currentQuestion.type === 'number_dropdown') {
             })}
             
             {/* Completion checkmarks for each section */}
-            {sections.map((section, index) => {
+            {/* {sections.map((section, index) => {
               const isCompleted = index < getCompletedSectionsCount();
               const sectionCenterPosition = ((index + 0.5) / sections.length) * 100;
               
@@ -561,7 +561,7 @@ else if (currentQuestion.type === 'number_dropdown') {
                   </div>
                 </motion.div>
               );
-            })}
+            })} */}
             
             
           </div>
