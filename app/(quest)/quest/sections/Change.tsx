@@ -14,10 +14,14 @@ const Change = () => {
             <p className='text-gray-500 mb-[-10px] text-2xl font-normal font-gilroy-regular pb-2'>Just me and your thoughts.</p>
             <h1 className='text-black font-gilroy-bold text-2xl'>Give it a try, It<span className='font-gilroy-mediumitalic'>'</span>s free!</h1>
         </div>
-        <div>
-            <Image src='/changepic.png' alt="Change Image" width={144} height={144} className='rounded-md'/>
+        <div className=''>
+            <img
+              src='/changepic.png'
+              alt='Change Illustration'
+              className='w-full h-auto'
+            />
         </div>
-        <div className='w-full h-50 rounded-md bg-gray-400'/>
+        <div className='w-full'/>
         <Link href="/assessment">
           <button className='flex py-4 p-2 text-white text-[24px] w-full items-center justify-center rounded-full bg-gradient-to-br from-sky-800 to-sky-400 border-2 border-blue-950 tracking-[-1.8px]'
           >

@@ -138,7 +138,7 @@ export const metadata: Metadata = {
     siteName: "Fraterny",
     images: [
       {
-        url: '/opengraph-image.png', // Place your OG image in public folder
+        url: '/favicon-32x32.png', // Place your OG image in public folder
         width: 1200,
         height: 630,
         alt: 'Fraterny - Social Network for Developers',
@@ -150,7 +150,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fraterny - Social Network for Developers",
     description: "Join Fraterny, the professional social network for developers. Connect, collaborate, and grow with fellow software engineers worldwide.",
-    images: ['/opengraph-image.png'], // Place your Twitter image in public folder
+    images: ['/favicon-32x32.png'], // Place your Twitter image in public folder
     creator: '@fraterny', // Add your Twitter handle
   },
   
@@ -162,11 +162,11 @@ export const metadata: Metadata = {
   
   icons: {
     icon: [
-      { url: '/opengraph-image.png ' },
-      { url: '/opengraph-image.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-32x32.png' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
     ],
     apple: [
-      { url: '/apple-icon.png' },
+      { url: '/favicon-32x32.png' },
     ],
     shortcut: '/favicon.ico',
   },

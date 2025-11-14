@@ -75,6 +75,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({
             >
               <h3 
                 className="text-white pr-4 font-gilroy-regular text-[28px] font-weight-400"
+                style={{ lineHeight: '105%', letterSpacing: '0%' }}
               >
                 {faq.question}
               </h3>

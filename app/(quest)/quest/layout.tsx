@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: 'Fraterny',
     images: [
       {
-        url: 'https://fraterny.in/og-image2.png',
+        url: 'https://fraterny.in/favicon-32x32.png',
         width: 1200,
         height: 630,
         alt: 'Quest Self-Awareness Test by Fraterny',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Quest: 15-Minute Self-Awareness Test + Detailed Analysis | Fraterny',
     description: 'Run Quest in 15 minutes. Free test with optional paid PDF. Map thought patterns, get a 35+ page report.',
-    images: ['https://fraterny.in/og-image2.png'],
+    images: ['https://fraterny.in/favicon-32x32.png'],
     creator: '@frat_erny',
   },
   viewport: {
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
     maximumScale: 5,
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: '/favicon-32x32.png',
+    apple: '/favicon-32x32.png',
   },
 };
 const jsonLd = {

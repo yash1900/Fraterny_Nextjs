@@ -95,16 +95,10 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
             delay: 0.4  // Start after text fades out
           }}
         >
-          {/* <img 
-            src={img}
-            alt="QUEST" 
-            className={`h-[36px] w-auto transition-all duration-500 ease-out cursor-pointer ${isInHeroSection ? 'brightness-0 invert' : 'opacity-0'}`}
-            onClick={_onLogoClick}
-          /> */}
           <Image 
             src='/Vector.svg'
-            alt="QUEST" 
-            width={36}
+            alt="QUEST: Run Quest in 15 minutes. Free test with optional paid PDF. Map thought patterns, get a 35+ page report." 
+            width={90}
             height={36}
             className={`transition-all duration-500 ease-out cursor-pointer ${isInHeroSection ? 'brightness-0 invert' : 'opacity-0'}`}
             onClick={_onLogoClick}
@@ -213,7 +207,7 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
           className='absolute z-10 w-[554px] h-[554px] bg-radial from-10% from-[#48B9D8] via-80% to-40% via-[#41D9FF] to-[#0C45F0] flex bottom-0 top-[45px] right-[51px] translate-x-1/2 rounded-full blur-[80px]'
           style={{
             background: 'radial-gradient(50% 50% at 50% 50%, #0C45F0 0%, #41D9FF 50.96%, #48B9D8 100%)',
-            backdropFilter: 'blur(180px)',
+            backdropFilter: 'blur(10px)',
           }}
         />
       </div>
