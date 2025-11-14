@@ -43,7 +43,7 @@ const BlogFilter: React.FC<BlogFilterProps> = ({
   if (categories.length === 0 && tags.length === 0) {
     return (
       <motion.div 
-        className="mb-8 bg-red-900 rounded-lg p-6 shadow-sm"
+        className="mb-8 bg-white rounded-lg p-6 shadow-sm"
       >
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-4">
