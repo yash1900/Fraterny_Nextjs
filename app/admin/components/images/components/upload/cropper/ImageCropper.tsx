@@ -79,7 +79,7 @@ const ImageCropper = ({
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col relative z-10">
       <CropperHeader 
         onApplyChanges={onApplyChanges}
         onCancelCrop={onCancelCrop}
@@ -87,7 +87,7 @@ const ImageCropper = ({
       />
       
       <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-1 lg:grid-cols-3 gap-6'}`}>
-        <div className={`${isMobile ? '' : 'lg:col-span-2'} relative bg-gray-50 rounded-lg border border-gray-200 p-4`}>
+        <div className={`${isMobile ? '' : 'lg:col-span-2'} relative bg-gray-50 rounded-lg border border-gray-200 p-4 z-10`}>
           <ReactCrop
             crop={crop}
             onChange={(c) => {
@@ -100,7 +100,7 @@ const ImageCropper = ({
             }}
             aspect={cropLocked ? aspectRatio : undefined}
             locked={false}
-            className="max-h-[400px] flex justify-center react-crop-container"
+            className="max-h-[400px] flex justify-center react-crop-container relative z-0"
           >
             <img
               ref={imgRef}
@@ -120,17 +120,17 @@ const ImageCropper = ({
           </ReactCrop>
           
           {isDragging && (
-            <div className="absolute top-0 left-0 right-0 bg-navy text-white text-center py-1 text-xs md:text-sm">
+            <div className="absolute top-0 left-0 right-0 bg-navy text-white text-center py-1 text-xs md:text-sm z-20">
               Dragging selection...
             </div>
           )}
           
-          <div className="mt-4 w-full flex items-center justify-center text-gray-500 gap-2 text-xs md:text-sm">
+          <div className="mt-4 w-full flex items-center justify-center text-gray-500 gap-2 text-xs md:text-sm relative z-10">
             <Move className="w-4 h-4" />
             <p>{isMobile ? 'Drag to position' : 'Drag to position the image in the placeholder • Use controls to zoom and rotate'}</p>
           </div>
 
-          <div className="mt-2 flex justify-center">
+          <div className="mt-2 flex justify-center relative z-10">
             <label className="inline-flex items-center">
               <input 
                 type="checkbox" 
@@ -144,8 +144,8 @@ const ImageCropper = ({
         </div>
         
         {!isMobile && (
-          <div className="bg-white border rounded-lg p-4">
-            <CropLivePreview 
+          <div className="bg-white border rounded-lg p-4 relative z-10">
+            <CropLivePreview
               imgRef={imgRef}
               crop={crop}
               completedCrop={null}
@@ -159,16 +159,18 @@ const ImageCropper = ({
         )}
       </div>
       
-      <ZoomRotateControls 
-        zoom={zoom}
-        setZoom={setZoom}
-        rotation={rotation}
-        setRotation={setRotation}
-      />
+      <div className="relative z-10">
+        <ZoomRotateControls 
+          zoom={zoom}
+          setZoom={setZoom}
+          rotation={rotation}
+          setRotation={setRotation}
+        />
+      </div>
       
       {isMobile && (
-        <div className="mt-6 bg-white border rounded-lg p-4">
-          <CropLivePreview 
+        <div className="mt-6 bg-white border rounded-lg p-4 relative z-10">
+          <CropLivePreview
             imgRef={imgRef}
             crop={crop}
             completedCrop={null}
@@ -182,14 +184,19 @@ const ImageCropper = ({
       )}
       
       <style>{`
-        .react-crop-container .ReactCrop__crop-selection {
-          border: 2px solid #0A1A2F;
-          box-shadow: 0 0 0 9999em rgba(0, 0, 0, 0.5);
+        .ReactCrop {
+          position: relative;
+          display: inline-block;
+        }
+        .ReactCrop__crop-selection {
+          border: 2px solid #0A1A2F !important;
+          box-shadow: none !important;
+          position: absolute !important;
         }
         .ReactCrop__drag-handle {
-          background-color: #0A1A2F;
-          width: 10px;
-          height: 10px;
+          background-color: #0A1A2F !important;
+          width: 10px !important;
+          height: 10px !important;
         }
         .ReactCrop__drag-handle:after {
           width: 10px;

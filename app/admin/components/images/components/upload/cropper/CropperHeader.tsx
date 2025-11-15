@@ -14,7 +14,7 @@ const CropperHeader = ({ onApplyChanges, onCancelCrop, imageKey }: CropperHeader
   const isMobile = useIsMobile();
   
   return (
-    <div className={`flex ${isMobile ? 'flex-col' : 'justify-between'} items-start sm:items-center mb-4 gap-3`}>
+    <div className={`flex ${isMobile ? 'flex-col' : 'justify-between'} items-start sm:items-center mb-4 gap-3 relative z-20`}>
       <button
         type="button"
         onClick={onCancelCrop}
