@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: 'Fraterny',
     images: [
       {
-        url: 'https://fraterny.in/favicon-32x32.png',
+        url: 'https://fraterny.in/og-image2.png',
         width: 1200,
         height: 630,
         alt: 'Quest — Private Psychological File by Fraterny',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Quest Mode — Your Psychological File | Fraterny',
     description: 'Compose a private psychological file from your words. Preview a precise fragment free; access the full edition when ready.',
-    images: ['https://fraterny.in/favicon-32x32.png'],
+    images: ['https://fraterny.in/og-image2.png'],
     creator: '@frat_erny',
   },
   viewport: {
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
     maximumScale: 5,
   },
   icons: {
-    icon: '/favicon-32x32.png',
-    apple: '/favicon-32x32.png',
+    icon: '/og-image2.png',
+    apple: '/og-image2.png',
   },
 };
 const jsonLd = {
@@ -78,9 +78,9 @@ const jsonLd = {
       'query-input': 'required name=search_term_string',
     },
     sameAs: [
-      'https://twitter.com/fraterny',
+      'https://x.com/frat_erny',
       'https://linkedin.com/company/fraterny',
-      'https://github.com/fraterny',
+      'https://www.instagram.com/quest.fraterny/',
     ],
   };
 
@@ -97,9 +97,9 @@ const jsonLd = {
       contactType: 'Support Service',
     },
     sameAs: [
-      'https://twitter.com/fraterny',
+      'https://x.com/frat_erny',
       'https://linkedin.com/company/fraterny',
-      'https://github.com/fraterny',
+      'https://www.instagram.com/quest.fraterny/',
     ],
   };
 
