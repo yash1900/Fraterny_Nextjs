@@ -37,7 +37,7 @@ const PrivacyPolicy = () => {
             </div>
 
             {/* Section 1 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">1. Our Privacy Commitment</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">1. Our Privacy Commitment</h2>
             <p className="mb-6">
               At Fraterny, your data is more than information - it's insight, trust, and a part of your journey with us. We will never sell your data or exploit it. We aim to:
             </p>
@@ -52,7 +52,7 @@ const PrivacyPolicy = () => {
             </p>
 
             {/* Section 2 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">2. Scope of This Policy</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">2. Scope of This Policy</h2>
             <p className="mb-4">This Policy applies to all visitors, applicants, and participants of:</p>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2"><strong>Quest by Fraterny</strong>: A psychological self-discovery journey to assess alignment and readiness.</li>
@@ -66,44 +66,44 @@ const PrivacyPolicy = () => {
             </p>
 
             {/* Section 3 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">3. Information We Collect</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">3. Information We Collect</h2>
             <p className="mb-6">
               We collect the following categories of information ("Personal Information"):
             </p>
             
-            <h3 className="text-navy font-playfair text-2xl font-semibold mt-8 mb-4">a. Identity & Profile Data</h3>
+            <h3 className="text-navy font-gilroy-bold text-2xl mt-8 mb-4">a. Identity & Profile Data</h3>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">Full name, gender, date of birth, city</li>
               <li className="mb-2">Social handles (if submitted voluntarily)</li>
               <li className="mb-2">Photos or video recordings during the program (with consent)</li>
             </ul>
 
-            <h3 className="text-navy font-playfair text-2xl font-semibold mt-8 mb-4">b. Contact Information</h3>
+            <h3 className="text-navy font-gilroy-bold text-2xl mt-8 mb-4">b. Contact Information</h3>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">Email address, phone number, and communication preferences</li>
             </ul>
 
-            <h3 className="text-navy font-playfair text-2xl font-semibold mt-8 mb-4">c. Psychological & Reflective Data</h3>
+            <h3 className="text-navy font-gilroy-bold text-2xl mt-8 mb-4">c. Psychological & Reflective Data</h3>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">Quest responses, answers to introspective questions</li>
               <li className="mb-2">Journals or feedback submitted during or after programs</li>
               <li className="mb-2">Self-assessment results or behavior-based observations</li>
             </ul>
 
-            <h3 className="text-navy font-playfair text-2xl font-semibold mt-8 mb-4">d. Health & Lifestyle Data (Optional)</h3>
+            <h3 className="text-navy font-gilroy-bold text-2xl mt-8 mb-4">d. Health & Lifestyle Data (Optional)</h3>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">Allergies, mental or physical health disclosures</li>
               <li className="mb-2">Dietary requirements or accessibility needs</li>
             </ul>
 
-            <h3 className="text-navy font-playfair text-2xl font-semibold mt-8 mb-4">e. Financial & Transactional Data</h3>
+            <h3 className="text-navy font-gilroy-bold text-2xl mt-8 mb-4">e. Financial & Transactional Data</h3>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">Payment history (via UPI, bank transfer, credit/debit card)</li>
               <li className="mb-2">Invoicing and billing records</li>
               <li className="mb-2">We do <strong>not</strong> collect or store card details directly</li>
             </ul>
 
-            <h3 className="text-navy font-playfair text-2xl font-semibold mt-8 mb-4">f. Technical & Usage Information</h3>
+            <h3 className="text-navy font-gilroy-bold text-2xl mt-8 mb-4">f. Technical & Usage Information</h3>
             <ul className="list-disc pl-6 mb-8">
               <li className="mb-2">Device type, IP address, browser details, operating system</li>
               <li className="mb-2">IP address for assessment validation, session recovery, and geographic verification</li>
@@ -113,7 +113,7 @@ const PrivacyPolicy = () => {
             </ul>
 
             {/* Section 4 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">4. How We Use Your Data</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">4. How We Use Your Data</h2>
             <p className="mb-4">Your data is used strictly to:</p>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">Evaluate your readiness and fit for Frat Villa through Quest</li>
@@ -128,7 +128,7 @@ const PrivacyPolicy = () => {
             </p>
 
             {/* Section 5 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">5. Disclosure of Information</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">5. Disclosure of Information</h2>
             <p className="mb-6">
               We do <strong>not</strong> sell, rent, or trade your personal information.
             </p>
@@ -145,13 +145,13 @@ const PrivacyPolicy = () => {
             </p>
 
             {/* Section 6 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">6. Public Forums and Community Environments</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">6. Public Forums and Community Environments</h2>
             <p className="mb-8">
               Any information you voluntarily share in group discussions, public forums, reflection circles, or post-program communities may be visible to others. We recommend you exercise discretion while sharing sensitive personal stories in semi-public settings, even though the environment is psychologically safe.
             </p>
 
             {/* Section 7 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">7. Cookies and Analytics</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">7. Cookies and Analytics</h2>
             <p className="mb-4">We use cookies and tools like Google Analytics to:</p>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">Track website performance</li>
@@ -163,7 +163,7 @@ const PrivacyPolicy = () => {
             </p>
 
             {/* Section 8 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">8. Retention of Information</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">8. Retention of Information</h2>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">Data related to Frat Villa or Quest will be retained for a period of <strong>up to 18 months</strong></li>
               <li className="mb-2">Anonymized behavioral data may be retained longer for internal insight and product development</li>
@@ -171,7 +171,7 @@ const PrivacyPolicy = () => {
             </ul>
 
             {/* Section 9 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">9. Data Security</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">9. Data Security</h2>
             <p className="mb-4">We use industry-standard security measures including:</p>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">End-to-end encryption (in transit and at rest)</li>
@@ -183,7 +183,7 @@ const PrivacyPolicy = () => {
             </p>
 
             {/* Section 10 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">10. Your Rights</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">10. Your Rights</h2>
             <p className="mb-4">You may at any time:</p>
             <ul className="list-disc pl-6 mb-6">
               <li className="mb-2">Request access to your data</li>
@@ -197,13 +197,13 @@ const PrivacyPolicy = () => {
             </p>
 
             {/* Section 11 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">11. Under 18 Policy</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">11. Under 18 Policy</h2>
             <p className="mb-8">
               Fraterny products are strictly meant for users aged <strong>18 and above</strong>. We do not knowingly collect data from minors.
             </p>
 
             {/* Section 12 */}
-            <h2 className="text-navy font-playfair text-3xl font-bold mt-12 mb-6">12. Changes to This Policy</h2>
+            <h2 className="text-navy font-gilroy-bold text-3xl mt-12 mb-6">12. Changes to This Policy</h2>
             <p className="mb-12">
               We may update this Privacy Policy as laws evolve or our services change. Updated versions will be posted with a revised effective date. Continued use of our services indicates acceptance of the latest terms.
             </p>
