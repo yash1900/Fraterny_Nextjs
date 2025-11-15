@@ -3,7 +3,7 @@ import ClientProviders from './ClientProviders';
 
 export const metadata: Metadata = {
   title: 'Blog | FRAT - Insights on Personal Growth & Development',
-  description: 'Explore articles on personality assessment, personal development, and growth insights from the FRAT community.',
+  description: 'Explore articles on psychology, personal development, and growth insights from the FRAT community.',
   keywords: ['blog', 'personal development', 'personality assessment', 'growth', 'FRAT', 'self-improvement'],
   
   applicationName: 'FRAT',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   
   openGraph: {
     title: 'FRAT Blog - Personal Growth & Development',
-    description: 'Explore insights on personality, growth, and self-improvement',
+    description: 'Explore insights on psychology, growth, and self-improvement',
     url: 'https://frat.com/blog',
     siteName: 'FRAT',
     locale: 'en_US',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'FRAT Blog - Personal Growth & Development',
-    description: 'Explore insights on personality, growth, and self-improvement',
+    description: 'Explore insights on psychology, growth, and self-improvement',
     creator: '@fratapp',
   },
 };
