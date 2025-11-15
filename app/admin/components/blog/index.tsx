@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import PageHeader from './components/PageHeader';
 import BlogForm from './components/BlogForm';
@@ -10,6 +10,7 @@ import { BlogFormValues, BlogPost } from './types';
 type TabType = 'published' | 'draft';
 
 const AdminBlog = () => {
+  const formRef = useRef<HTMLDivElement>(null);
   const [formValues, setFormValues] = useState<BlogFormValues>({
     title: '',
     content: '',
@@ -47,6 +48,13 @@ const AdminBlog = () => {
     queryFn: fetchAdminBlogPosts,
   });
 
+  // Scroll to form when it's shown or editing changes
+  useEffect(() => {
+    if (showForm && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [showForm, editingId]);
+
   const handleEdit = (post: BlogPost) => {
     setFormValues({
       title: post.title,
@@ -66,7 +74,10 @@ const AdminBlog = () => {
     });
     setEditingId(post.id);
     setShowForm(true);
-    window.scrollTo(0, 0);
+    // Scroll to form after state update
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   const handleNewPost = () => {
@@ -88,7 +99,10 @@ const AdminBlog = () => {
     });
     setEditingId(null);
     setShowForm(true);
-    window.scrollTo(0, 0);
+    // Scroll to form after state update
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   const handleFormSuccess = async () => {
@@ -109,13 +123,15 @@ const AdminBlog = () => {
       <PageHeader onNewPostClick={handleNewPost} />
         
         {showForm && (
-          <BlogForm 
-            editingId={editingId}
-            formValues={formValues}
-            setFormValues={setFormValues}
-            setEditingId={setEditingId}
-            onSuccess={handleFormSuccess}
-          />
+          <div ref={formRef}>
+            <BlogForm 
+              editingId={editingId}
+              formValues={formValues}
+              setFormValues={setFormValues}
+              setEditingId={setEditingId}
+              onSuccess={handleFormSuccess}
+            />
+          </div>
         )}
 
         {/* Tabs */}

@@ -17,7 +17,22 @@ export async function POST(request: NextRequest) {
     const alt_text = formData.get('alt_text') as string;
     const category = formData.get('category') as string | null;
 
+    // Debug logging
+    console.log('Upload received:', {
+      hasFile: !!file,
+      key,
+      description,
+      alt_text,
+      category,
+    });
+
     if (!file || !key || !description || !alt_text) {
+      console.error('Validation failed:', {
+        hasFile: !!file,
+        hasKey: !!key,
+        hasDescription: !!description,
+        hasAltText: !!alt_text,
+      });
       return NextResponse.json(
         {
           success: false,

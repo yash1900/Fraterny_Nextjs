@@ -241,7 +241,7 @@ const handleExplanationChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
           value={state.explanation}
           onChange={handleExplanationChange}
           placeholder="Write one sentence explaining why..."
-          className="w-full p-3 border border-gray-200 rounded-lg justify-start text-black text-xl font-normal font-gilroy-medium resize-y"
+          className="w-full p-3 border bg-white border-gray-200 rounded-lg justify-start text-black text-xl font-normal font-gilroy-medium resize-y"
           disabled={disabled}
         />
       </div>

@@ -98,16 +98,32 @@ const BlogForm = ({ editingId, formValues, setFormValues, setEditingId, onSucces
       return;
     }
 
+    if (!formValues.title || formValues.title.trim() === '') {
+      toast.error('Please add a title before uploading an image');
+      return;
+    }
+
     try {
       setUploadingImage(true);
       const imageKey = `blog-${editingId || Date.now()}`;
+      const title = formValues.title.trim();
+      
+      console.log('Preparing upload with title:', title);
       
       const formData = new FormData();
       formData.append('file', file);
       formData.append('key', imageKey);
-      formData.append('description', `Image for blog: ${formValues.title}`);
-      formData.append('alt', formValues.title || 'Blog image');
+      formData.append('description', `Image for blog: ${title}`);
+      formData.append('alt_text', title);
       formData.append('category', 'Blog');
+      
+      console.log('FormData contents:', {
+        file: formData.get('file'),
+        key: formData.get('key'),
+        description: formData.get('description'),
+        alt_text: formData.get('alt_text'),
+        category: formData.get('category'),
+      });
 
       const response = await fetch('/api/media/upload', {
         method: 'POST',

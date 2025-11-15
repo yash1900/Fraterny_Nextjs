@@ -293,9 +293,9 @@ export function QuestNavigation({
 
       // If no response in session, check if current question has DOM value
       if (!response && question.id === currentQuestion?.id) {
-        // Check current DOM state for this question with proper type casting
-        const currentTextarea = document.querySelector('textarea') as HTMLTextAreaElement;
-        const currentInput = document.querySelector('input[type="text"]') as HTMLInputElement;
+        // Check current DOM state for this question - find VISIBLE elements only
+        const currentTextarea = Array.from(document.querySelectorAll('textarea')).find(ta => ta.offsetParent !== null) as HTMLTextAreaElement | undefined;
+        const currentInput = Array.from(document.querySelectorAll('input[type="text"]')).find(input => input.offsetParent !== null) as HTMLInputElement | undefined;
         const currentRadio = document.querySelector(`input[name="question-${question.id}"]:checked`) as HTMLInputElement;
 
         const hasCurrentValue = (currentTextarea && currentTextarea.value.trim()) ||
